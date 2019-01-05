@@ -28,8 +28,8 @@ export const player =
     right : 0,
     width : 0,
     height : 0,
-    speed : 5,
-    jumpSpeed : 6,
+    speed : 10,
+    jumpSpeed : 10,
     center : [0,0],
     gravity : 0.1,
     gravitySpeed : 0,
@@ -141,14 +141,14 @@ export const player =
     {
         let numSteps = 5;
         let stepSpeed = this.speed/numSteps;
-        if(!this.onGround)
+       /* if(!this.onGround)
         {
             this.gravitySpeed += this.gravity;
             this.top += this.gravitySpeed;
             this.bottom += this.gravitySpeed;
         }
 
-
+*/
         this.updateCollision();
         let oldPos = [this.left, this.top];
         if(key[37])
@@ -158,7 +158,7 @@ export const player =
                 oldPos = [this.left,this.top];
                 this.left -= stepSpeed;
                 this.right -= stepSpeed;
-                this.collided(map,oldPos);
+              //  this.collided(map,oldPos);
                 this.updateCollision();
             }
            // this.left -= this.speed;
@@ -177,7 +177,7 @@ export const player =
                 oldPos = [this.left,this.top];
                 this.left += stepSpeed;
                 this.right += stepSpeed;
-                this.collided(map,oldPos);
+               // this.collided(map,oldPos);
                 this.updateCollision();
             }
            // this.left += this.speed;
@@ -191,7 +191,7 @@ export const player =
         }
         this.updateCollision();
        
-        this.collided(map, oldPos);
+       // this.collided(map, oldPos);
         oldPos = [this.left, this.top];
         if(key[38])
         {
@@ -200,7 +200,7 @@ export const player =
                 oldPos = [this.left, this.top];
                 this.top -= stepSpeed;
                 this.bottom -= stepSpeed;
-                this.collided(map,oldPos);
+               // this.collided(map,oldPos);
                 this.updateCollision();
             }
             //this.top -= this.jumpSpeed;
@@ -221,7 +221,7 @@ export const player =
                 oldPos = [this.left, this.top];
                 this.top += stepSpeed;
                 this.bottom += stepSpeed;
-                this.collided(map,oldPos);
+                //this.collided(map,oldPos);
                 this.updateCollision();
             }
             //this.top += this.speed;
@@ -229,7 +229,7 @@ export const player =
         }
         this.updateCollision();
        
-        this.collided(map, oldPos);
+        //this.collided(map, oldPos);
 
 
 
@@ -284,7 +284,7 @@ export const player =
         }
         */
         
-        context.fillRect(this.collisionTile.left*30,this.collisionTile.top*30,(this.collisionTile.right*30)-(this.collisionTile.left*30),(this.collisionTile.bottom*30)-(this.collisionTile.top*30));
+       // context.fillRect(this.collisionTile.left*30,this.collisionTile.top*30,(this.collisionTile.right*30)-(this.collisionTile.left*30),(this.collisionTile.bottom*30)-(this.collisionTile.top*30));
         context.fillStyle = "#FF0000";
         context.fillRect(this.left,this.top,this.width,this.height);
     }

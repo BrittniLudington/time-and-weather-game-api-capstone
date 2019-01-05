@@ -1,4 +1,8 @@
 import {camera} from "./Camera.js";
+import {player} from "./Player.js";
+
+
+export let allTimeLocations = [5];
 
 export default function Tile(number, w, h, ox, oy)
 {
@@ -11,6 +15,11 @@ export default function Tile(number, w, h, ox, oy)
     tile.right = tile.x + tile.width;
     tile.bottom = tile.y + tile.height;
 
+    if(tile.number == 2) // time place
+    {
+        let timeLoc = {x : tile.left, y : tile.top, isTaken: false};
+        allTimeLocations.push(timeLoc);
+    }
     /*
     if ((o1.y > o2.y) && (o1.y < o2.y + o2.h)) {
   return 'top'; // o1's top border collided with o2's bottom border}

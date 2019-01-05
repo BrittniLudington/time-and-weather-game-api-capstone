@@ -28,7 +28,7 @@ export const camera =
     bottom : 0,
     width : 0,
     height : 0,
-    speed : 5,
+    speed : 10,
     offsetX : 0,
     offsetY : 0,
     map : [0,0],
@@ -51,8 +51,8 @@ export const camera =
         this.right = this.left + this.width;
         this.top -= this.offsetY;
         this.bottom = this.top + this.height;
-        this.cameraByTile.left = this.left/30;
-        this.cameraByTile.top = this.top/30;
+        this.cameraByTile.left = this.left/60;
+        this.cameraByTile.top = this.top/60;
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
      //   console.log(this.center[0] + ", " + this.center[1]);
@@ -60,6 +60,7 @@ export const camera =
         context.save();
         context.translate(this.offsetX,this.offsetY);
         context.clearRect(-this.offsetX,-this.offsetY,this.width,this.height);
+       
 
        
     },
@@ -93,8 +94,8 @@ export const camera =
         this.map[0] = mapW;
         this.map[1] = mapH;
         // we know tiles are 30x30
-        this.cameraByTile.width =  (this.width / 30)+2;
-        this.cameraByTile.height = (this.height / 30)+2;
+        this.cameraByTile.width =  (this.width / 60)+2;
+        this.cameraByTile.height = (this.height / 60)+2;
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
     },

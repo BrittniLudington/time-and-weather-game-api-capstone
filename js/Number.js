@@ -1,14 +1,22 @@
+import {allTimeLocations} from "./Tile.js";
+
 
 export default function makeNumber(num, h)
 {
+
     const newNumber = {};
     newNumber.val = num;
-    newNumber.width = 30;
-    newNumber.height = 30;
+    newNumber.width = 60;
+    newNumber.height = 60;
     newNumber.color = "#ffff00";
-    newNumber.left = 0;
+    let loc = Math.floor(Math.random() * 5)+1;
+    console.log(loc);
+    while(allTimeLocations[loc].isTaken){    console.log(loc);
+        loc = Math.floor(Math.random() * 5);}
+    newNumber.left = allTimeLocations[loc].x;
     newNumber.right = newNumber.left+newNumber.width;
-    newNumber.top = h;
+    newNumber.top = allTimeLocations[loc].y;
+    allTimeLocations[loc].isTaken = true;
     newNumber.bottom = newNumber.top+newNumber.bottom;
     newNumber.gravitySpeed = 0;
     newNumber.gravity = 0.1;
