@@ -30,9 +30,12 @@ export const player =
     height : 0,
     speed : 10,
     jumpSpeed : 10,
+    jumpPos : 0,
+    jumpMax : 300,
     center : [0,0],
     gravity : 0.1,
     gravitySpeed : 0,
+    gravityMax : 15,
     map : [],
     onGround : false,
 
@@ -114,6 +117,7 @@ export const player =
                        this.top = this.bottom-this.height;
                        this.gravitySpeed = 0;
                        this.onGround = true;
+                       this.jumpPos = 0;
                        oldPos[1] = this.top;
                    }
                    if(!yOverlap)
@@ -124,10 +128,15 @@ export const player =
                        this.bottom = this.top+this.height;
                        oldPos[1] = this.top;
                    }
+                  /* if(xOverlap)
+                   {
+                       this.left = oldPos[0];
+                       this.right = this.left + this.width;
+                   }*/
                  
                    this.center[0] = this.left + (this.width/2);
                    this.center[1] = this.top + (this.height/2);
-                   camera.checkKeys();
+                   //camera.checkKeys();
 
                     
                 }
@@ -141,14 +150,15 @@ export const player =
     {
         let numSteps = 5;
         let stepSpeed = this.speed/numSteps;
-       /* if(!this.onGround)
+        if(!this.onGround)
         {
-            this.gravitySpeed += this.gravity;
+            if(this.gravitySpeed <= this.gravityMax)
+                this.gravitySpeed += this.gravity;
             this.top += this.gravitySpeed;
             this.bottom += this.gravitySpeed;
         }
 
-*/
+
         this.updateCollision();
         let oldPos = [this.left, this.top];
         if(key[37])
@@ -158,7 +168,7 @@ export const player =
                 oldPos = [this.left,this.top];
                 this.left -= stepSpeed;
                 this.right -= stepSpeed;
-              //  this.collided(map,oldPos);
+                this.collided(map,oldPos);
                 this.updateCollision();
             }
            // this.left -= this.speed;
@@ -177,7 +187,7 @@ export const player =
                 oldPos = [this.left,this.top];
                 this.left += stepSpeed;
                 this.right += stepSpeed;
-               // this.collided(map,oldPos);
+                this.collided(map,oldPos);
                 this.updateCollision();
             }
            // this.left += this.speed;
@@ -191,16 +201,21 @@ export const player =
         }
         this.updateCollision();
        
-       // this.collided(map, oldPos);
+        this.collided(map, oldPos);
         oldPos = [this.left, this.top];
         if(key[38])
         {
+
             for(let i = 0; i < numSteps; i++)
             {
                 oldPos = [this.left, this.top];
-                this.top -= stepSpeed;
-                this.bottom -= stepSpeed;
-               // this.collided(map,oldPos);
+                if(this.jumpPos <= this.jumpMax)
+                {
+                    this.top -= stepSpeed;
+                    this.bottom -= stepSpeed;
+                    this.jumpPos += stepSpeed;
+                }
+                this.collided(map,oldPos);
                 this.updateCollision();
             }
             //this.top -= this.jumpSpeed;
@@ -214,22 +229,23 @@ export const player =
 
         }
 
-        if(key[40])
+      /* if(key[40])
         {
             for(let i = 0; i < numSteps; i++)
             {
                 oldPos = [this.left, this.top];
                 this.top += stepSpeed;
                 this.bottom += stepSpeed;
-                //this.collided(map,oldPos);
+                this.collided(map,oldPos);
                 this.updateCollision();
             }
             //this.top += this.speed;
             //this.bottom += this.speed;
         }
+        */
         this.updateCollision();
        
-        //this.collided(map, oldPos);
+        this.collided(map, oldPos);
 
 
 

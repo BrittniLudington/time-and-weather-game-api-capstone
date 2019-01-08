@@ -110,7 +110,7 @@ export const camera =
         {
             if(this.left >0)
             {
-                this.offsetX+=this.speed;
+                this.offsetX+=player.speed;
                 keyDown=true;
             }
         }
@@ -118,7 +118,7 @@ export const camera =
         {
             if(this.top > 0)
             {
-                this.offsetY+=this.speed;
+                this.offsetY+=player.jumpSpeed;
                 keyDown=true;
             }
         }
@@ -126,7 +126,7 @@ export const camera =
         {
             if(this.right < this.map[0])
             {
-                this.offsetX-=this.speed;
+                this.offsetX-=player.speed;
                 keyDown=true;
             }
         }
@@ -134,7 +134,7 @@ export const camera =
         {
             if(this.bottom < this.map[1])
             {
-                this.offsetY-=this.speed;
+                this.offsetY-=player.gravitySpeed;
                 keyDown=true;
             }
         }

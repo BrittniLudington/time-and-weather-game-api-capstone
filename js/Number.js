@@ -9,7 +9,7 @@ export default function makeNumber(num, h)
     newNumber.width = 60;
     newNumber.height = 60;
     newNumber.color = "#ffff00";
-    let loc = Math.floor(Math.random() * 5)+1;
+    let loc = Math.floor(Math.random() * 5);
     console.log(loc);
     while(allTimeLocations[loc].isTaken){    console.log(loc);
         loc = Math.floor(Math.random() * 5);}

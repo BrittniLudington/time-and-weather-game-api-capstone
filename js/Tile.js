@@ -2,7 +2,7 @@ import {camera} from "./Camera.js";
 import {player} from "./Player.js";
 
 
-export let allTimeLocations = [5];
+export let allTimeLocations = [];
 
 export default function Tile(number, w, h, ox, oy)
 {

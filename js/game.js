@@ -126,9 +126,10 @@ function update()
 {
     //player.checkKeys();
     context.clearRect(0,0,canvas.width,canvas.height);
-    let updateCam = camera.checkKeys();
+
     time.update();
     player.checkKeys(camera.left,camera.right,camera.top,camera.bottom, map);
+    let updateCam = camera.checkKeys();
     //console.log(player.left + ", " + player.top);
     if(updateCam)
         camera.update(context);//player.left + (player.width/2), player.top + (player.height/2), context);
