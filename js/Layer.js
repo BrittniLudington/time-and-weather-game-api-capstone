@@ -1,6 +1,7 @@
 import Tile from "./Tile.js";
 import {camera} from "./Camera.js";
 
+
 export default function Layer(data, tileWidth, tileHeight)
 {
     const layer = {};

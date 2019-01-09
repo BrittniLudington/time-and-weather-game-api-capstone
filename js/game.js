@@ -47,7 +47,7 @@ function updateTime(){
         timeStr = result.formatted;
         timeStr = timeStr.slice(10);
         timeStr = timeStr.trim();
-        map = NewMap("./levels/newMapTestCol.json", drawMap);
+        map = NewMap("./levels/mainLevel.json", drawMap);
 
 
 
@@ -116,7 +116,7 @@ function drawMap()
     //console.log(context);
     map.drawMap(context);
     camera.setDimensions(canvas.width,canvas.height, map.width, map.height);
-    player.set(30,30, map.tilewidth, map.tileheight, map.width,map.height);
+    player.set(map.tilewidth,map.tileheight, map.tilewidth, map.tileheight, map.width,map.height);
     player.setLocation(camera.right / 2, camera.height / 2);
     time.setTime(timeStr, map.width,map.height);
     requestAnimationFrame(update);
@@ -126,9 +126,10 @@ function update()
 {
     //player.checkKeys();
     context.clearRect(0,0,canvas.width,canvas.height);
-    let updateCam = camera.checkKeys();
+
     time.update();
     player.checkKeys(camera.left,camera.right,camera.top,camera.bottom, map);
+    let updateCam = camera.checkKeys();
     //console.log(player.left + ", " + player.top);
     if(updateCam)
         camera.update(context);//player.left + (player.width/2), player.top + (player.height/2), context);

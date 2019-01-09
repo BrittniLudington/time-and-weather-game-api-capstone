@@ -21,9 +21,9 @@ export const time =
 
     update : function()
     {
-        this.hour.update(this.width);
-        this.minute.update(this.width);
-        this.second.update(this.width);
+        //this.hour.update(this.width);
+        //this.minute.update(this.width);
+        //this.second.update(this.width);
     },
 
     draw : function(context)
