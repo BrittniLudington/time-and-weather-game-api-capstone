@@ -33,6 +33,7 @@ export const camera =
     offsetY : 0,
     map : [0,0],
     center : [0,0],
+    leniency: 1,
 
     startTile : [0,0],
     endTile : [0,0],
@@ -47,6 +48,7 @@ export const camera =
 
     update : function(context)
     {
+
         this.left -= this.offsetX;
         this.right = this.left + this.width;
         this.top -= this.offsetY;
@@ -56,9 +58,10 @@ export const camera =
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
      //   console.log(this.center[0] + ", " + this.center[1]);
-     //   console.log("left:" + this.left + ", right: " + this.right + ", top: "+ this.top + ", bottom: " + this.bottom);
+       // console.log("left:" + this.left + ", right: " + this.right + ", top: "+ this.top + ", bottom: " + this.bottom);
         context.save();
         context.translate(this.offsetX,this.offsetY);
+     //   context.restore();
         context.clearRect(-this.offsetX,-this.offsetY,this.width,this.height);
        
 
@@ -110,7 +113,7 @@ export const camera =
         {
             if(this.left >0)
             {
-                this.offsetX+=player.speed;
+                    this.offsetX+=player.speed;
                 keyDown=true;
             }
         }
@@ -118,7 +121,7 @@ export const camera =
         {
             if(this.top > 0)
             {
-                this.offsetY+=player.jumpSpeed;
+                    this.offsetY+=player.jumpSpeed;
                 keyDown=true;
             }
         }
@@ -126,7 +129,7 @@ export const camera =
         {
             if(this.right < this.map[0])
             {
-                this.offsetX-=player.speed;
+                    this.offsetX-=player.speed;
                 keyDown=true;
             }
         }
@@ -134,7 +137,7 @@ export const camera =
         {
             if(this.bottom < this.map[1])
             {
-                this.offsetY-=player.gravitySpeed;
+                    this.offsetY-=player.gravitySpeed;
                 keyDown=true;
             }
         }

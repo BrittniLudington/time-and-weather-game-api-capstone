@@ -1,4 +1,5 @@
 import {camera} from "./Camera.js";
+import {collision} from "./Collision.js";
 var key = {};
 
 
@@ -33,12 +34,12 @@ export const player =
     jumpPos : 0,
     jumpMax : 300,
     center : [0,0],
-    gravity : 0.1,
+    gravity : 0.2,
     gravitySpeed : 0,
     gravityMax : 15,
     map : [],
     onGround : false,
-
+    oldPos : [],
     colTiles : [],
 
     collisionTile : 
@@ -95,61 +96,37 @@ export const player =
         */
     },
 
-    collided : function(map, oldPos)
+
+    collided : function(map)
     {
+        this.onGround = false;
+        this.updateCollision(); // top left
+        let value = map.getTile(this.collisionTile.top,this.collisionTile.left);
+        collision.collide(this,value);
+            //this.collide(value, "left", "top");
 
-        for(let i = this.collisionTile.left; i <= this.collisionTile.right; i++)
-        {
-            for(let j = this.collisionTile.top; j <= this.collisionTile.bottom; j++)
-            {
-                let tile = map.getTile(j,i);
-                //console.log(tile);
-                if(tile.number >= 0)
-                {
-                  let xOverlap = ((this.left < tile.left+tile.width) && (this.right > tile.left)); //|| ((this.left > tile.left&&this.left<tile.right) && (this.right > tile.right));
-                   let yOverlap = ((this.top < tile.top) && this.bottom > tile.top);
-                   let yUnderlap = ((this.top > tile.top && this.top < tile.top+tile.height) && this.bottom > tile.top+tile.height)
-                    let xOverLeft = ((this.left < tile.left) && this.right > tile.left && this.right < tile.left+tile.width);
-                   if(yOverlap)
-                   {
-                       //this.top = //oldPos[1];
-                       this.bottom = tile.top;
-                       this.top = this.bottom-this.height;
-                       this.gravitySpeed = 0;
-                       this.onGround = true;
-                       this.jumpPos = 0;
-                       oldPos[1] = this.top;
-                   }
-                   if(!yOverlap)
-                    this.onGround = false;
-                   if(yUnderlap)
-                   {
-                       this.top = tile.top+tile.height;
-                       this.bottom = this.top+this.height;
-                       oldPos[1] = this.top;
-                   }
-                  /* if(xOverlap)
-                   {
-                       this.left = oldPos[0];
-                       this.right = this.left + this.width;
-                   }*/
-                 
-                   this.center[0] = this.left + (this.width/2);
-                   this.center[1] = this.top + (this.height/2);
-                   //camera.checkKeys();
+        this.updateCollision(); // top right
+        
+        value = map.getTile(this.collisionTile.top,this.collisionTile.right);
+        collision.collide(this,value);
 
-                    
-                }
-                else
-                    this.onGround = false;
-            }
-        }
+        this.updateCollision(); // bottom left
+        value = map.getTile(this.collisionTile.bottom,this.collisionTile.left);
+        collision.collide(this,value);
+
+        this.updateCollision(); // bottom right
+        value = map.getTile(this.collisionTile.bottom,this.collisionTile.right);
+        collision.collide(this,value);
+        
+     
     },
     
     checkKeys : function(leftBorder, rightBorder, topBorder, bottomBorder, map)
     {
         let numSteps = 5;
         let stepSpeed = this.speed/numSteps;
+        this.oldPos = [this.left, this.top];
+
         if(!this.onGround)
         {
             if(this.gravitySpeed <= this.gravityMax)
@@ -159,17 +136,16 @@ export const player =
         }
 
 
-        this.updateCollision();
-        let oldPos = [this.left, this.top];
+
+        //this.collided(map);
         if(key[37])
         {
             for(let i = 0; i < numSteps; i++)
             {
-                oldPos = [this.left,this.top];
+                //this.oldPos = [this.left,this.top];
                 this.left -= stepSpeed;
                 this.right -= stepSpeed;
-                this.collided(map,oldPos);
-                this.updateCollision();
+                //this.collided(map);
             }
            // this.left -= this.speed;
            // this.right -= this.speed;
@@ -184,11 +160,10 @@ export const player =
         {
             for(let i = 0; i < numSteps; i++)
             {
-                oldPos = [this.left,this.top];
+                //this.oldPos = [this.left,this.top];
                 this.left += stepSpeed;
                 this.right += stepSpeed;
-                this.collided(map,oldPos);
-                this.updateCollision();
+                //this.collided(map);
             }
            // this.left += this.speed;
            // this.right += this.speed;
@@ -199,24 +174,20 @@ export const player =
             }
 
         }
-        this.updateCollision();
-       
-        this.collided(map, oldPos);
-        oldPos = [this.left, this.top];
+
         if(key[38])
         {
 
             for(let i = 0; i < numSteps; i++)
             {
-                oldPos = [this.left, this.top];
+               // this.oldPos = [this.left, this.top];
                 if(this.jumpPos <= this.jumpMax)
                 {
                     this.top -= stepSpeed;
                     this.bottom -= stepSpeed;
                     this.jumpPos += stepSpeed;
                 }
-                this.collided(map,oldPos);
-                this.updateCollision();
+                //this.collided(map);
             }
             //this.top -= this.jumpSpeed;
             //this.bottom -= this.jumpSpeed;
@@ -229,25 +200,20 @@ export const player =
 
         }
 
-      /* if(key[40])
+       if(key[40])
         {
             for(let i = 0; i < numSteps; i++)
             {
-                oldPos = [this.left, this.top];
+               // this.oldPos = [this.left, this.top];
                 this.top += stepSpeed;
                 this.bottom += stepSpeed;
-                this.collided(map,oldPos);
-                this.updateCollision();
+                //this.collided(map);
             }
             //this.top += this.speed;
             //this.bottom += this.speed;
         }
-        */
-        this.updateCollision();
+        
        
-        this.collided(map, oldPos);
-
-
 
         if(this.bottom >= bottomBorder)
         {
@@ -257,33 +223,7 @@ export const player =
         }
 
        
-       /* let right = this.colTiles[4].left + this.colTiles[4].width;
-        if((this.colTiles[4].number > -1 && this.collides(right,"left"))) //|| this.colTiles[8].number > -1 && this.collides(right,"left"))
-        {
-            //console.log("left tile is a collision tile");
-            this.left = right;
-            this.right = this.left+this.width;
-        }
-        let bottom = this.colTiles[5].top + this.colTiles[5].height;
-        if((this.colTiles[5].number > -1 && this.collides(bottom,"top")) || (this.colTiles[6].number > -1 && this.collides(bottom,"top")))
-        {
-            this.top = bottom;
-            this.bottom = this.top+this.height;
-        }
-        let top = this.colTiles[9].top;
-        if((this.colTiles[9].number > -1 && this.collides(top,"bottom")) || (this.colTiles[10].number > -1 && this.collides(top,"bottom")))
-        {
-            this.bottom = top;
-            this.top = this.bottom-this.height;
-            this.gravitySpeed = 0;
-        }
-        let left = this.colTiles[6].left;
-        if(this.colTiles[6].number > -1 && this.collides(left,"right"))
-        {
-            this.right = left;
-            this.left = this.right - this.width;
-        }
-        */
+        this.collided(map);
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
 

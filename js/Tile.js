@@ -7,7 +7,7 @@ export let allTimeLocations = [];
 export default function Tile(number, w, h, ox, oy)
 {
     const tile = {};
-    tile.number = number - 1;
+    tile.number = number - 6;
     tile.width = w;
     tile.height = h;
     tile.left = ox;
@@ -15,7 +15,7 @@ export default function Tile(number, w, h, ox, oy)
     tile.right = tile.x + tile.width;
     tile.bottom = tile.y + tile.height;
 
-    if(tile.number == 2) // time place
+    if(tile.number == 0) // time place
     {
         let timeLoc = {x : tile.left, y : tile.top, isTaken: false};
         allTimeLocations.push(timeLoc);

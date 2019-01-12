@@ -116,7 +116,7 @@ function drawMap()
     //console.log(context);
     map.drawMap(context);
     camera.setDimensions(canvas.width,canvas.height, map.width, map.height);
-    player.set(map.tilewidth,map.tileheight, map.tilewidth, map.tileheight, map.width,map.height);
+    player.set(map.tilewidth-5,map.tileheight-5, map.tilewidth, map.tileheight, map.width,map.height);
     player.setLocation(camera.right / 2, camera.height / 2);
     time.setTime(timeStr, map.width,map.height);
     requestAnimationFrame(update);
@@ -135,6 +135,7 @@ function update()
         camera.update(context);//player.left + (player.width/2), player.top + (player.height/2), context);
     
     map.drawMap(context);
+    context.fillStyle = time.color;
     context.fillText(timeStr,camera.left+10,camera.top+40);
     time.draw(context);
     player.draw(context);

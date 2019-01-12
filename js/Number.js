@@ -8,7 +8,6 @@ export default function makeNumber(num, h)
     newNumber.val = num;
     newNumber.width = 60;
     newNumber.height = 60;
-    newNumber.color = "#ffff00";
     let loc = Math.floor(Math.random() * 5);
     console.log(loc);
     while(allTimeLocations[loc].isTaken){    console.log(loc);
@@ -22,6 +21,7 @@ export default function makeNumber(num, h)
     newNumber.gravity = 0.1;
     newNumber.speed = 5;
     newNumber.direction = 1;
+    newNumber.color = "#FFFF00";
 
     newNumber.draw = function(context)
     {
