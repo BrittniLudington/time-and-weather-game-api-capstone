@@ -52,7 +52,6 @@ export default function Layer(data, tileWidth, tileHeight)
 
             for(let j = Math.floor(camera.cameraByTile.left); j < camRight; j++)
             {
-                //console.log("i is " + i + ", j is "+ j);
                 layer.tiles[i][j].draw(context,img,scrCol,scrWidth,scrHeight);
             }
         }

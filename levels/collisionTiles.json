@@ -1,0 +1,20 @@
+{ "columns":5,
+ "image":"..\/img\/SpritesTwo.png",
+ "imageheight":240,
+ "imagewidth":300,
+ "margin":0,
+ "name":"collisionTiles New",
+ "spacing":0,
+ "terrains":[
+        {
+         "name":"noCollision",
+         "tile":14
+        }],
+ "tilecount":20,
+ "tiledversion":"1.2.1",
+ "tileheight":60,
+ "tilewidth":60,
+ "transparentcolor":"#ff00ff",
+ "type":"tileset",
+ "version":1.2
+}

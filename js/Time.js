@@ -7,6 +7,7 @@ export const time =
     second : 0,
     height : 0,
     width : 0,
+    color : "#FFFF00",
 
     setTime : function(string, w, h)
     {
