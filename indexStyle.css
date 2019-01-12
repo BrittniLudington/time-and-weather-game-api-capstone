@@ -1,0 +1,21 @@
+#canvasDiv
+{
+    position: relative;
+
+}
+
+#objects
+{
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    top: 0px;
+}
+
+#canvas
+{
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+}
