@@ -155,14 +155,12 @@ export const camera =
         this.height = height;
         // add in maxX and maxY later
     }
-
     update(map)
     {
         var startCol = Math.floor(this.x / map.tSize);
         var endCol = startCol + (this.width / map.tSize);
         var startRow = Math.floor(this.y / map.tSize);
         var endRow = startRow + (this.height / map.tSize);
-
         var offsetX = -this.x + startCol * map.tSize;
         var offsetY = -this.y + startRow * map.tSize;
     }

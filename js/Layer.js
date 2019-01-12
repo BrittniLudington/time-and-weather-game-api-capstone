@@ -26,9 +26,19 @@ export default function Layer(data, tileWidth, tileHeight)
         }
     }
 
-    layer.draw = function(context, img, scrCol, scrWidth, scrHeight)
+    layer.draw = function(canvasContext, img, scrCol, scrWidth, scrHeight)
     {
-
+        /*let v = 0;
+        for(let i = 0; i < this.height; i++)
+        {
+            for(let j = 0; j < this.width; j++)
+            {
+                this.tiles[i][j].draw(canvasContext,img,scrCol,scrWidth,scrHeight);
+                v++;
+            }
+        }
+        console.log("tiles drawn : " + v);
+        */
         //culling idea:
         /*
             let i = camerabytile.top
@@ -52,10 +62,10 @@ export default function Layer(data, tileWidth, tileHeight)
 
             for(let j = Math.floor(camera.cameraByTile.left); j < camRight; j++)
             {
-                layer.tiles[i][j].draw(context,img,scrCol,scrWidth,scrHeight);
+                layer.tiles[i][j].draw(canvasContext,img,scrCol,scrWidth,scrHeight);
             }
         }
-
+        
     };
     layer.getTile = function(x,y)
     {

@@ -51,14 +51,16 @@ export default function NewMap(name, callback)
                         
                     };
 
-                    map.drawMap = function(context)
+                    map.drawMap = function(canvasContext)
                     {
                         //console.log(this.layers);
+                        canvasContext.save();
                         for(var i = 0; i < this.layers.length; i++)
                         {
                             if(this.layers[i].visibility)
-                                this.layers[i].draw(context, this.sprSheet,this.srcCol,this.srcWidth,this.srcHeight);
+                                this.layers[i].draw(canvasContext, this.sprSheet,this.srcCol,this.srcWidth,this.srcHeight);
                         }
+                        //canvasContext.restore();
                         
                     };
                     state = true;

@@ -134,7 +134,7 @@ export const player =
             this.top += this.gravitySpeed;
             this.bottom += this.gravitySpeed;
         }
-
+        
 
 
         //this.collided(map);
@@ -231,6 +231,7 @@ export const player =
 
     draw : function(context)
     {
+        context.save();
         context.fillStyle = "#800080";
         /*for(let i = 0; i < this.colTiles.length;i++)
         {
@@ -239,10 +240,11 @@ export const player =
 
         }
         */
-        
+        //context.translate(this.left,this.height);
        // context.fillRect(this.collisionTile.left*30,this.collisionTile.top*30,(this.collisionTile.right*30)-(this.collisionTile.left*30),(this.collisionTile.bottom*30)-(this.collisionTile.top*30));
         context.fillStyle = "#FF0000";
         context.fillRect(this.left,this.top,this.width,this.height);
+       // context.restore();
     }
     
 }

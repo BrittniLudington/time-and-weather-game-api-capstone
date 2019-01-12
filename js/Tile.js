@@ -38,7 +38,7 @@ export default function Tile(number, w, h, ox, oy)
     {
         context.fillRect(this.left,this.top,this.width,this.height);
     }
-    tile.draw = function(context, img, scrCol, scrWidth, scrHeight) // 2 30 30
+    tile.draw = function(canvasContext, img, scrCol, scrWidth, scrHeight) // 2 30 30
     {
         if(this.number < 0)
             return; // clear tile, do not draw
@@ -51,9 +51,10 @@ export default function Tile(number, w, h, ox, oy)
             tempNum = tempNum - scrCol;
             locY++;
         }
- 
+       // this.tempDraw(canvasContext);
+      //  console.log(this.left, this.top, this.width, this.height);
         // x = cameraOffsetX + x*
-        context.drawImage(img,tempNum*scrWidth,locY*scrHeight,scrWidth,scrHeight,this.left,this.top,this.width,this.height);
+        canvasContext.drawImage(img,tempNum*scrWidth,locY*scrHeight,scrWidth,scrHeight,this.left,this.top,this.width,this.height);
     };
 
 

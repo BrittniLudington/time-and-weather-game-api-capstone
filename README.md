@@ -4,15 +4,7 @@ App game utilizing timezone and weather APIs. After selecting a timezone the use
 
 Site map:
 
-
-
-
-
-
-
-
-
-
+![site map](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/siteMap.png?raw=true)
 
 
 
@@ -23,12 +15,12 @@ Site map:
 UX and User Stories:
 
 
+
 Landing Page:
 
 	As a user I want a page that holds the game and is simple to navigate.
 
-
-
+![landing page](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/landingPage.png?raw=true)
 
 
 
@@ -54,7 +46,7 @@ Instructions:
 
 	As a user I want to have easy to understand instructions on how the game functions and plays. 
 
- 
+ ![Instructions](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/InstructionsPage.png?raw=true)
 
 
 
