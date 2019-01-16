@@ -1,13 +1,14 @@
 import {player} from "./Player.js";
 import {camera} from "./Camera.js";
 import {time} from "./Time.js";
+import {api} from "./Data.js";
 //import {importLevel, map, getMapSize} from "./Map.js";
 import NewMap from "./NewMap.js";
 var canvas;
 var context;
 var map;
-let zoneVal, timeStr;
-let options;
+let timeStr;
+
 
 
 window.onload = function ()
@@ -17,18 +18,18 @@ window.onload = function ()
 
     context = canvas.getContext('2d');   
     context.font = "40px Ariel";
-    options = document.getElementById("options");
+   /* options = document.getElementById("options");
     let newObj = document.createElement("option");
-    newObj.text = "loading timezones, please wait...";
+    //newObj.text = "loading timezones, please wait...";
     options.add(newObj);
-    getTimeZones();
+    */
 
 
    console.log("end of main");
    //map.drawMap(context);
 }
 
-function updateTime(){
+/*function getTime(obj){
 
     let k = "9OQQVUWZ20HP";
     
@@ -38,8 +39,10 @@ function updateTime(){
       {
         key: k,
         format:"json",
-        by: "zone",
-        zone: zoneVal
+        by: "position",//"zone",
+        //zone: zoneVal
+        lat: latLong[1],
+        lng: latLong[0]
       },
       success: function(result)
       {
@@ -47,6 +50,7 @@ function updateTime(){
         timeStr = result.formatted;
         timeStr = timeStr.slice(10);
         timeStr = timeStr.trim();
+        
         map = NewMap("./levels/mainLevel.json", drawMap);
 
 
@@ -61,49 +65,35 @@ function updateTime(){
     
     }
 
-function getTimeZones()
+*/
+
+function setUp()
 {
-  let k = "9OQQVUWZ20HP";
-
-$.ajax({
-  url: "https://api.timezonedb.com/v2.1/list-time-zone",
-  data:
-  {
-    key: k,
-    format:"json",
-  },
-  success: function(result)
-  {
-    //console.log(result);
-    options.remove(0);
-    console.log("getTimeZones");
-    for(let i = 0; i < result.zones.length; i++)
-    {
-      let newObj = document.createElement("option");
-      newObj.text = result.zones[i].zoneName;
-      options.add(newObj);
-    }
-    
-  },
-  error: function(err)
-  {
-    console.log("error");
-    console.log(err);
-  }
-});
+  timeStr = api.time;
+  timeStr = timeStr.slice(10);
+  timeStr = timeStr.trim();
+  
+  map = NewMap("./levels/mainLevel.json", drawMap);
 }
-
 
 $("#submitButton").click(function(event)
 {
-    $(this).prop("disabled",true);
   event.preventDefault();
-  console.log("hello");
-  zoneVal = $('#options').val();
-  //$('#dropDownId :selected').text();
-
-  updateTime();
-  
+  if(document.getElementById("dropDown") == null)
+  {
+    let location = $("#town").val();
+    let country = $("#country").val();
+    api.getLatLong(location,country, setUp);
+    //return;
+  }
+  else
+  {  
+    let drop = document.getElementById("dropDown");
+    let obj = api.dataTime[drop.options[drop.selectedIndex].value];
+    api.removeElement(drop);
+    api.removeElement(document.getElementById("p"));
+    api.getTime(obj, setUp);
+  }  
   
   //interval = setInterval(update, minute); //uncomment this when testing
   //context.fillText(value,10,50);
