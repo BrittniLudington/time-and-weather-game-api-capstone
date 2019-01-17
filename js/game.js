@@ -16,6 +16,7 @@ let globalAlpha = 0;
 window.onload = function ()
 {
 
+  $("#countriesHere").load("Countries.html");
     canvas = document.getElementById('canvas');
 
     context = canvas.getContext('2d');   
@@ -88,6 +89,7 @@ $("#submitButton").click(function(event)
   {
     let location = $("#town").val();
     let country = $("#country").val();
+
     api.getLatLong(location,country, setUp);
     //return;
   }
