@@ -8,6 +8,7 @@ export const time =
     height : 0,
     width : 0,
     color : "#FFFF00",
+    img : "",
 
     setTime : function(string, w, h)
     {
@@ -18,6 +19,15 @@ export const time =
         this.minute = makeNumber(array[1], 300);
         this.second = makeNumber(array[2], 500);
 
+
+    },
+
+    getLight : function()
+    {
+        if(this.hour.getTime() > 7 && this.hour.getTime() < 16 )
+            return 0;
+
+        return 0.7;
     },
 
     update : function()
@@ -29,9 +39,9 @@ export const time =
 
     draw : function(context)
     {
-        this.hour.draw(context);
-        this.minute.draw(context);
-        this.second.draw(context);
+        this.hour.draw(context, this.img);
+        this.minute.draw(context, this.img);
+        this.second.draw(context, this.img);
     }
 
 }

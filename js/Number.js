@@ -5,13 +5,14 @@ export default function makeNumber(num, h)
 {
 
     const newNumber = {};
-    newNumber.val = num;
+    newNumber.val = [num.charAt(0), num.charAt(1)];
+    newNumber.valFull = num;
     newNumber.width = 60;
     newNumber.height = 60;
     let loc = Math.floor(Math.random() * 5);
-    console.log(loc);
-    while(allTimeLocations[loc].isTaken){    console.log(loc);
+    while(allTimeLocations[loc].isTaken){    
         loc = Math.floor(Math.random() * 5);}
+    newNumber.tile = allTimeLocations[loc].tile;
     newNumber.left = allTimeLocations[loc].x;
     newNumber.right = newNumber.left+newNumber.width;
     newNumber.top = allTimeLocations[loc].y;
@@ -23,10 +24,18 @@ export default function makeNumber(num, h)
     newNumber.direction = 1;
     newNumber.color = "#FFFF00";
 
-    newNumber.draw = function(context)
+    newNumber.getTime = function()
     {
-        context.fillStyle = newNumber.color;
-        context.fillText(this.val,this.left,this.top);
+        return newNumber.valFull;
+    };
+
+    newNumber.draw = function(context, image)
+    {
+        //context.fillStyle = newNumber.color;
+        //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+        context.drawImage(image,this.val[0]*30,0,30,60,this.left,this.top,30,60);
+        context.drawImage(image,this.val[1]*30,0,30,60,this.left+30,this.top,30,60);
+        //context.fillText(this.val,this.left,this.top, this.width, this.height);
     };
     newNumber.update = function(widthLimit)
     {

@@ -1,5 +1,6 @@
 import {camera} from "./Camera.js";
 import {collision} from "./Collision.js";
+import {time} from "./Time.js";
 var key = {};
 
 
@@ -19,6 +20,7 @@ window.addEventListener("keyup",function(event)
     //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
 });
 
+let count;
 
 export const player =
 {
@@ -41,6 +43,9 @@ export const player =
     onGround : false,
     oldPos : [],
     colTiles : [],
+    img : 0,
+    direction : 0,
+    pos : 0,
 
     collisionTile : 
     {
@@ -62,20 +67,29 @@ export const player =
         this.map[1] = mH;
     },
 
-    setLocation: function(x,y)
+    setLocation: function(map)//x,y)
     {
-        this.left = x;
+        let tile = map.getStartTile(1);
+        this.left = tile.left;
+        this.top = tile.top;
+        this.right = this.left + this.width;
+        this.bottom = this.top + this.height;
+        this.center[0] = this.left + (this.width/2);
+        this.center[1] = this.top + (this.height/2);
+       /* this.left = x;
         this.top = y;
         this.right = x+this.width;
         this.bottom = y+this.height;
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
+        */
         this.updateCollision();
     },
 
     updateCollision: function()
     {
         this.collisionTile.left = this.left/this.collisionTile.width;
+        //console.log(this.collisionTile.left + " hi");
         if(this.collisionTile.left < 0)
             this.collisionTile.left = 0;
         this.collisionTile.right = this.right/this.collisionTile.width;
@@ -118,7 +132,10 @@ export const player =
         value = map.getTile(this.collisionTile.bottom,this.collisionTile.right);
         collision.collide(this,value);
         
-     
+       /* collision.collideNum(this,time.second);
+        collision.collideNum(this,time.minute);
+        collision.collideNum(this,time.hour);
+        */
     },
     
     checkKeys : function(leftBorder, rightBorder, topBorder, bottomBorder, map)
@@ -140,6 +157,7 @@ export const player =
         //this.collided(map);
         if(key[37])
         {
+            this.direction = 2;
             for(let i = 0; i < numSteps; i++)
             {
                 //this.oldPos = [this.left,this.top];
@@ -158,6 +176,7 @@ export const player =
         }
         if(key[39])
         {
+            this.direction = 3;
             for(let i = 0; i < numSteps; i++)
             {
                 //this.oldPos = [this.left,this.top];
@@ -222,6 +241,10 @@ export const player =
             this.gravitySpeed = 0;
         }
 
+        if(this.direction == 2 && !key[37])
+            this.direction = 0;
+        if(this.direction == 3 && !key[39])
+            this.direction = 1;
        
         this.collided(map);
         this.center[0] = this.left + (this.width/2);
@@ -233,17 +256,19 @@ export const player =
     {
         context.save();
         context.fillStyle = "#800080";
-        /*for(let i = 0; i < this.colTiles.length;i++)
+// ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+        context.drawImage(this.img,this.pos*60,this.direction*60,60,60,this.left,this.top,this.width,this.height);
+        count++;
+        if(count >= 500)
         {
-            if(i == 6 || i == 4)
-                this.colTiles[i].tempDraw(context);
-
+            if(this.pos != 11)
+                this.pos++;
+            else
+                this.pos = 0;
+            count = 0;
         }
-        */
-        //context.translate(this.left,this.height);
-       // context.fillRect(this.collisionTile.left*30,this.collisionTile.top*30,(this.collisionTile.right*30)-(this.collisionTile.left*30),(this.collisionTile.bottom*30)-(this.collisionTile.top*30));
-        context.fillStyle = "#FF0000";
-        context.fillRect(this.left,this.top,this.width,this.height);
+        //context.fillStyle = "#FF0000";
+        //context.fillRect(this.left,this.top,this.width,this.height);
        // context.restore();
     }
     

@@ -38,6 +38,14 @@ export const collision =
         };
     },
 
+    collideNum: function(player, number)
+    {
+        if(this.collideTop(player,number.top))// hit
+        {
+            player.gravitySpeed = -player.gravitySpeed;
+        }
+    },
+
     collideLeft : function(player, tile_left)
     {
         if(player.right > tile_left && player.oldPos[0]+player.width <= tile_left)

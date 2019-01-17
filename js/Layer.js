@@ -57,11 +57,16 @@ export default function Layer(data, tileWidth, tileHeight)
         if(camRight >this.width)
             camRight = this.width;
        //console.log("camRight is " + camRight);
+
         for(let i = Math.floor(camera.cameraByTile.top); i < camBottom; i++)
         {
 
             for(let j = Math.floor(camera.cameraByTile.left); j < camRight; j++)
             {
+                if(typeof layer.tiles[i] == 'undefined')
+                {
+                    console.log(i + " layer is undefined");
+                }
                 layer.tiles[i][j].draw(canvasContext,img,scrCol,scrWidth,scrHeight);
             }
         }
@@ -70,6 +75,19 @@ export default function Layer(data, tileWidth, tileHeight)
     layer.getTile = function(x,y)
     {
         return this.tiles[Math.floor(x)][Math.floor(y)];
+    };
+    layer.getStartTile = function(id)
+    {
+        for(let i = 0; i < this.height; i++)
+        {
+            for(let j = 0; j < this.width; j++)
+            {
+                if(this.tiles[i][j].number == id)
+                    return this.tiles[i][j];
+            }
+        }
+        return -1;
+        //return this.tiles[Math.floor(x)][Math.floor(y)];
     };
    return layer;
 }

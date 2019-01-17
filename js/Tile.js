@@ -8,6 +8,7 @@ export default function Tile(number, w, h, ox, oy)
 {
     const tile = {};
     tile.number = number - 6;
+
     tile.width = w;
     tile.height = h;
     tile.left = ox;
@@ -15,11 +16,7 @@ export default function Tile(number, w, h, ox, oy)
     tile.right = tile.x + tile.width;
     tile.bottom = tile.y + tile.height;
 
-    if(tile.number == 0) // time place
-    {
-        let timeLoc = {x : tile.left, y : tile.top, isTaken: false};
-        allTimeLocations.push(timeLoc);
-    }
+    
     /*
     if ((o1.y > o2.y) && (o1.y < o2.y + o2.h)) {
   return 'top'; // o1's top border collided with o2's bottom border}
@@ -56,7 +53,11 @@ export default function Tile(number, w, h, ox, oy)
         // x = cameraOffsetX + x*
         canvasContext.drawImage(img,tempNum*scrWidth,locY*scrHeight,scrWidth,scrHeight,this.left,this.top,this.width,this.height);
     };
-
+    if(tile.number == 0) // time place
+    {
+        let timeLoc = {x : tile.left, y : tile.top, isTaken: false, tile : tile};
+        allTimeLocations.push(timeLoc);
+    }
 
 
    return tile;

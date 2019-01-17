@@ -49,22 +49,37 @@ export const camera =
     update : function(context)
     {
 
-        this.left -= this.offsetX;
+        this.left += this.offsetX;
+        if(this.left < 0)
+            this.left = 0;
         this.right = this.left + this.width;
-        this.top -= this.offsetY;
+        if(this.right > this.map[0])
+            this.right = this.map[0];
+        this.top += this.offsetY;
+        if(this.top < 0)
+            this.top = 0;
         this.bottom = this.top + this.height;
+        if(this.bottom > this.map[1])
+            this.bottom = this.map[1];
         this.cameraByTile.left = this.left/60;
         this.cameraByTile.top = this.top/60;
+        if(this.cameraByTile.top < 0)
+            this.cameraByTile.top = 0;
+        if(this.cameraByTile.left < 0)
+            this.cameraByTile.left = 0;
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
      //   console.log(this.center[0] + ", " + this.center[1]);
        // console.log("left:" + this.left + ", right: " + this.right + ", top: "+ this.top + ", bottom: " + this.bottom);
         context.save();
-        context.translate(this.offsetX,this.offsetY);
+        context.translate(-this.offsetX,-this.offsetY);
      //   context.restore();
         context.clearRect(-this.offsetX,-this.offsetY,this.width,this.height);
-       
+        
 
+       
+        // offset x and y are REVERSE of regular x and y!!!!!
+        // y+ goes up, x+ goes left
        
     },
 
@@ -103,44 +118,68 @@ export const camera =
         this.center[1] = this.top + (this.height/2);
     },
 
+    setPosition : function(x, y)
+    {
+        this.center[0] = x;
+        this.center[1] = y;
+        this.left = this.center[0]-(this.width/2);
+        this.right = this.left+this.width;
+        this.top = this.center[1]-(this.height/2);
+        this.bottom = this.top+this.height;
+    },
+
 
     checkKeys : function()
     {
         this.offsetX = 0;
         this.offsetY = 0;
         let keyDown = false;
-        if(!this.playerToRight())//key[37] && !this.playerToRight())
+        if(this.playerToRight())//key[37] && !this.playerToRight())
         {
-            if(this.left >0)
+            if(this.left >=0)
             {
-                    this.offsetX+=player.speed;
+                this.offsetX+= player.center[0] - this.center[0];
+                    //this.offsetX+=player.speed;
                 keyDown=true;
             }
         }
-        if(!this.playerBelow())//key[38] && !this.playerBelow())
+        if(this.playerBelow())//key[38] && !this.playerBelow())
         {
-            if(this.top > 0)
+
+            if(this.top >= 0)
             {
-                    this.offsetY+=player.jumpSpeed;
+                this.offsetY+= player.center[1] - this.center[1];
+                    //this.offsetY+=player.jumpSpeed;
                 keyDown=true;
             }
         }
-        if(!this.playerToLeft())//key[39] && !this.playerToLeft())
+        if(this.playerToLeft())//key[39] && !this.playerToLeft())
         {
-            if(this.right < this.map[0])
+            if(this.right <= this.map[0])
             {
-                    this.offsetX-=player.speed;
+                this.offsetX-= this.center[0] - player.center[0];
+                    //this.offsetX-=player.speed;
                 keyDown=true;
             }
         }
-        if(!this.playerAbove())//key[40] && !this.playerAbove())
+        if(this.playerAbove())//key[40] && !this.playerAbove())
         {
-            if(this.bottom < this.map[1])
+            if(this.bottom <= this.map[1])
             {
-                    this.offsetY-=player.gravitySpeed;
+                this.offsetY-= this.center[1] - player.center[1];
+                    //this.offsetY-=player.gravitySpeed;
                 keyDown=true;
             }
         }
+        if(this.top <= 0 && this.offsetY < 0)
+            this.offsetY = 0;
+        if(this.left <= 0 && this.offsetX < 0)
+            this.offsetX = 0;
+        if(this.right >= this.map[0] && this.offsetX > 0)
+            this.offsetX = 0;
+        if(this.bottom >= this.map[1] && this.offsetY > 0)
+            this.offsetY = 0;
+
         return keyDown;
     }
 };

@@ -8,6 +8,8 @@ var canvas;
 var context;
 var map;
 let timeStr;
+let night = "#09162b";
+let globalAlpha = 0;
 
 
 
@@ -18,6 +20,10 @@ window.onload = function ()
 
     context = canvas.getContext('2d');   
     context.font = "40px Ariel";
+    time.img = new Image();
+    time.img.src = "./img/numberSprites.png";
+    player.img = new Image();
+    player.img.src = "./img/charSprite.png";
    /* options = document.getElementById("options");
     let newObj = document.createElement("option");
     //newObj.text = "loading timezones, please wait...";
@@ -72,7 +78,6 @@ function setUp()
   timeStr = api.time;
   timeStr = timeStr.slice(10);
   timeStr = timeStr.trim();
-  
   map = NewMap("./levels/mainLevel.json", drawMap);
 }
 
@@ -105,17 +110,19 @@ function drawMap()
 {
     //console.log(context);
     map.drawMap(context);
-    camera.setDimensions(canvas.width,canvas.height, map.width, map.height);
     player.set(map.tilewidth-5,map.tileheight-5, map.tilewidth, map.tileheight, map.width,map.height);
-    player.setLocation(camera.right / 2, camera.height / 2);
+    player.setLocation(map);//camera.right / 2, camera.height / 2);
+    camera.setDimensions(canvas.width,canvas.height, map.width, map.height);
+    //camera.setPosition(player.center[0],player.center[1]);
     time.setTime(timeStr, map.width,map.height);
+    globalAlpha = time.getLight();
     requestAnimationFrame(update);
 }
 
 function update()
 {
     //player.checkKeys();
-    context.clearRect(0,0,canvas.width,canvas.height);
+    context.clearRect(camera.left,camera.top,camera.width,camera.height);
 
     time.update();
     player.checkKeys(camera.left,camera.right,camera.top,camera.bottom, map);
@@ -129,6 +136,13 @@ function update()
     context.fillText(timeStr,camera.left+10,camera.top+40);
     time.draw(context);
     player.draw(context);
+    if(globalAlpha != 0)
+    {
+      context.globalAlpha = globalAlpha;
+      context.fillStyle = night;
+      context.fillRect(camera.left,camera.top,camera.width,camera.height);
+      context.globalAlpha = 1.0;
+    }
     //context.restore();
     //player.draw(context);
 

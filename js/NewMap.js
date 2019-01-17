@@ -50,6 +50,24 @@ export default function NewMap(name, callback)
                         // for this the collision layer is 1
                         
                     };
+                    map.getStartTile = function(id)
+                    {
+                        /*
+                            purpose: send in boundary to the collision layer. Collision layer should return the four tiles around.
+                            Use for loops?
+                        */
+                        for(let i = 0; i < this.layers.length; i++)
+                        {
+                            if(this.layers[i].name == "startingLocations")
+                            {
+                                return this.layers[i].getStartTile(id);
+                            }
+                        }
+
+                        console.log("found no collision layer");
+                        // for this the collision layer is 1
+                        
+                    };
 
                     map.drawMap = function(canvasContext)
                     {
