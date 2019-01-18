@@ -1,7 +1,26 @@
 #canvasDiv
 {
     position: relative;
+    width :50%;
+    margin:auto;
+}
 
+#selection
+{
+    position: relative;
+    width: 50%;
+    text-align:center;
+    line-height: 30px;
+}
+
+#countriesHere
+{
+    display:inline;
+}
+
+#town
+{
+    display:inline;
 }
 
 #objects
@@ -18,4 +37,5 @@
     z-index: 1;
     left: 0px;
     top: 0px;
+    border: solid 1px black;
 }

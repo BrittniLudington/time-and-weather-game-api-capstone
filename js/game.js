@@ -16,6 +16,8 @@ let globalAlpha = 0;
 window.onload = function ()
 {
 
+  $("#town").before("Town: ");
+  $("#countriesHere").before("Country: ");
   $("#countriesHere").load("Countries.html");
     canvas = document.getElementById('canvas');
 
