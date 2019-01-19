@@ -40,10 +40,19 @@ export const collision =
 
     collideNum: function(player, number)
     {
-        if(this.collideTop(player,number.top))// hit
+        let oldBottom = player.oldPos[1]+player.height;
+
+        if(player.bottom > number.top && oldBottom <= number.top)
         {
-            player.gravitySpeed = -player.gravitySpeed;
+           if((player.left >= number.left && player.left <= number.right) || 
+            (player.left <= number.left && player.right >= number.left))
+            {
+                player.gravitySpeed = -player.gravitySpeed;
+                number.hit();
+            }
+           
         }
+
     },
 
     collideLeft : function(player, tile_left)

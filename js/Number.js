@@ -24,7 +24,7 @@ export default function makeNumber(num, h)
     newNumber.direction = 1;
     newNumber.color = "#FFFF00";
     newNumber.isAlive = true;
-    newNumber.health = newNumber.valFull;
+    newNumber.health = h;
 
     newNumber.getTime = function()
     {
@@ -33,16 +33,20 @@ export default function makeNumber(num, h)
 
     newNumber.hit = function()
     {
+        console.log("health: " + newNumber.health);
         newNumber.health --;
+        
     }
 
     newNumber.draw = function(context, image)
     {
-        //context.fillStyle = newNumber.color;
-        //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-        context.drawImage(image,this.val[0]*30,0,30,60,this.left,this.top,30,60);
-        context.drawImage(image,this.val[1]*30,0,30,60,this.left+30,this.top,30,60);
-        //context.fillText(this.val,this.left,this.top, this.width, this.height);
+        if(this.health > 0)
+        {
+            context.drawImage(image,this.val[0]*30,0,30,60,this.left,this.top,30,60);
+            context.drawImage(image,this.val[1]*30,0,30,60,this.left+30,this.top,30,60);
+            return;
+        }
+
     };
     newNumber.update = function(widthLimit)
     {

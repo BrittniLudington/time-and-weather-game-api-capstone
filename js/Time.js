@@ -15,9 +15,9 @@ export const time =
         this.width = w;
         this.height = h;
         let array = string.split(":");
-        this.hour = makeNumber(array[0], 100);
-        this.minute = makeNumber(array[1], 300);
-        this.second = makeNumber(array[2], 500);
+        this.hour = makeNumber(array[0], 5);
+        this.minute = makeNumber(array[1], 3);
+        this.second = makeNumber(array[2], 1);
 
 
     },
