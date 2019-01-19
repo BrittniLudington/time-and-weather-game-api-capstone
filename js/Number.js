@@ -35,12 +35,13 @@ export default function makeNumber(num, h)
     {
         console.log("health: " + newNumber.health);
         newNumber.health --;
-        
+        if(newNumber.health <= 0)
+            this.isAlive = false;
     }
 
     newNumber.draw = function(context, image)
     {
-        if(this.health > 0)
+        if(this.isAlive)
         {
             context.drawImage(image,this.val[0]*30,0,30,60,this.left,this.top,30,60);
             context.drawImage(image,this.val[1]*30,0,30,60,this.left+30,this.top,30,60);

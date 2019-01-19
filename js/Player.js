@@ -132,11 +132,15 @@ export const player =
         value = map.getTile(this.collisionTile.bottom,this.collisionTile.right);
         collision.collide(this,value);
         
-        collision.collideNum(this,time.second);
-        collision.collideNum(this,time.minute);
-        collision.collideNum(this,time.hour);
+        if(time.second.isAlive)
+            collision.collideNum(this,time.second);
+        if(time.minute.isAlive)
+            collision.collideNum(this,time.minute);
+        if(time.hour.isAlive)
+            collision.collideNum(this,time.hour);
         
     },
+
     
     checkKeys : function(leftBorder, rightBorder, topBorder, bottomBorder, map)
     {

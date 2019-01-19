@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Time Catcher</title>
-        <meta name="description" content="Fun little platform game"></meta>
+        <meta name="description" content="main page for Time Catcher">
+        <link rel="stylesheet" href="css/index.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="css/indexStyle.css">
-        <script type = "module" src = "js/game.js"></script>
+        <script type = "module" src = "webPageJs/index.js"></script>
     </head>
     <body>
-            <form id = "selection">
-                <input type="text" id="town" name="townName" placeholder="Town name"><br>
-                <div id="countriesHere"></div><br>
-                  <button id="submitButton">Submit</button>
-                    </form>
-        <div id = "canvasDiv">
-            <canvas id = "objects" width = "500px" height = "500px"></canvas>
-            <canvas id = "canvas" width = "500px" height = "500px"></canvas>
-        </div>
-       <!-- <img src = "img/spriteSheetBackground.png">-->
+
+        <container id="buttons">
+                <h1>Time Catcher</h1>
+            <button id="gameButton">Go to game</button>
+            <button id="instructionsButton">How To Play</button>
+            <button id="creditsButton">Credits</button>
+        </container>
     </body>
 </html>

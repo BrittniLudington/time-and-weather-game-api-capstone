@@ -30,6 +30,11 @@ export const time =
         return 0.7;
     },
 
+    status : function()
+    {
+        return this.second.isAlive || this.minute.isAlive || this.hour.isAlive;
+    },
+
     update : function()
     {
         //this.hour.update(this.width);

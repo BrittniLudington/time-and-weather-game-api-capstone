@@ -11,6 +11,10 @@ let timeStr;
 let night = "#09162b";
 let globalAlpha = 0;
 
+$("#backButton").click(function()
+{
+    window.location.href = "index.html";
+})
 
 
 window.onload = function ()
@@ -81,6 +85,12 @@ function drawMap()
 function update()
 {
     //player.checkKeys();
+    if(!time.status())
+    {
+      // game over
+      console.log("you win!");
+      return;
+    }
     context.clearRect(0,0,map.width,map.height);
 
     time.update();
