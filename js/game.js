@@ -27,54 +27,9 @@ window.onload = function ()
     time.img.src = "./img/numberSprites.png";
     player.img = new Image();
     player.img.src = "./img/charSprite.png";
-   /* options = document.getElementById("options");
-    let newObj = document.createElement("option");
-    //newObj.text = "loading timezones, please wait...";
-    options.add(newObj);
-    */
-
 
    console.log("end of main");
-   //map.drawMap(context);
 }
-
-/*function getTime(obj){
-
-    let k = "9OQQVUWZ20HP";
-    
-    $.ajax({
-      url: "https://api.timezonedb.com/v2.1/get-time-zone",
-      data:
-      {
-        key: k,
-        format:"json",
-        by: "position",//"zone",
-        //zone: zoneVal
-        lat: latLong[1],
-        lng: latLong[0]
-      },
-      success: function(result)
-      {
-        console.log(result.formatted);
-        timeStr = result.formatted;
-        timeStr = timeStr.slice(10);
-        timeStr = timeStr.trim();
-        
-        map = NewMap("./levels/mainLevel.json", drawMap);
-
-
-
-      },
-      error: function(err)
-      {
-        console.log("error");
-        console.log(err);
-      }
-    });
-    
-    }
-
-*/
 
 function setUp()
 {
@@ -104,15 +59,15 @@ $("#submitButton").click(function(event)
     api.getTime(obj, setUp);
   }  
   
-  //interval = setInterval(update, minute); //uncomment this when testing
-  //context.fillText(value,10,50);
-
 });
 
 
 function drawMap()
 {
     //console.log(context);
+    api.removeElement(document.getElementById("town"));
+    api.removeElement(document.getElementById("countriesHere"));
+    api.removeElement(document.getElementById("selection"));
     map.drawMap(context);
     player.set(map.tilewidth-5,map.tileheight-5, map.tilewidth, map.tileheight, map.width,map.height);
     player.setLocation(map);//camera.right / 2, camera.height / 2);
@@ -126,7 +81,7 @@ function drawMap()
 function update()
 {
     //player.checkKeys();
-    context.clearRect(camera.left,camera.top,camera.width,camera.height);
+    context.clearRect(0,0,map.width,map.height);
 
     time.update();
     player.checkKeys(camera.left,camera.right,camera.top,camera.bottom, map);

@@ -23,11 +23,18 @@ export default function makeNumber(num, h)
     newNumber.speed = 5;
     newNumber.direction = 1;
     newNumber.color = "#FFFF00";
+    newNumber.isAlive = true;
+    newNumber.health = newNumber.valFull;
 
     newNumber.getTime = function()
     {
         return newNumber.valFull;
     };
+
+    newNumber.hit = function()
+    {
+        newNumber.health --;
+    }
 
     newNumber.draw = function(context, image)
     {

@@ -151,6 +151,11 @@ export const player =
             this.top += this.gravitySpeed;
             this.bottom += this.gravitySpeed;
         }
+
+        if(key[84]) // attacking
+        {
+
+        }
         
 
 

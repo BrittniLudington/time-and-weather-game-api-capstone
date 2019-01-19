@@ -1,0 +1,43 @@
+
+h1
+{
+    margin:auto;
+    text-align: center;
+}
+
+#content
+{
+    margin:auto;
+    width:75%;
+    height:100%;
+}
+
+#start
+{
+
+    width:100%;
+    border:solid 1px black;
+
+}
+
+#goal
+{
+    display:inline-block;
+    margin-top:10px;
+    width:45%;
+    border:solid 1px black;
+}
+
+#controls
+{
+    border:solid 1px black;
+    margin-top:10px;
+    width:45%;
+    display:inline-block;
+
+}
+
+#center
+{
+    text-align:center;
+}
