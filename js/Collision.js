@@ -12,26 +12,26 @@ export const collision =
                     this.collideBottom(player,tile.top+tile.height); break;
             case 4: if(this.collideRight(player,tile.left+tile.width)) return;
                     this.collideBottom(player,tile.top+tile.height); break;
-            case 5: if(this.collideLeft(player,tile.left))return;
+            case 10: if(this.collideLeft(player,tile.left))return;
                     this.collideBottom(player,tile.top+tile.height); break;
-            case 6: if(this.collideLeft(player,tile.left)) return;
+            case 11: if(this.collideLeft(player,tile.left)) return;
                     if(this.collideRight(player,tile.left+tile.width)) return;
                     this.collideBottom(player,tile.top); break;
-            case 7: if(this.collideTop(player,tile.top)) return;
+            case 12: if(this.collideTop(player,tile.top)) return;
                     this.collideBottom(player,tile.top+tile.height); break;
-            case 8: if(this.collideRight(player,tile.left+tile.width)) return;
+            case 13: if(this.collideRight(player,tile.left+tile.width)) return;
                     this.collideTop(player,tile.top); break;
-            case 9: if(this.collideLeft(player,tile.left)) return;
+            case 14: if(this.collideLeft(player,tile.left)) return;
                     this.collideTop(player,tile.top); break;
-            case 10: this.collideRight(player,tile.left+tile.width); break;
-            case 11: this.collideLeft(player,tile.left); break;
-            case 12: this.collideBottom(player,tile.top+tile.bottom); break;
+            case 20: this.collideRight(player,tile.left+tile.width); break;
+            case 21: this.collideLeft(player,tile.left); break;
+            case 22: this.collideBottom(player,tile.top+tile.height); break;
             // 14 not a collision tile
-            case 13: this.collideTop(player,tile.top); break;
-            case 15: if(this.collideRight(player,tile.left+tile.width)) return;
+            case 23: this.collideTop(player,tile.top); break;
+            case 30: if(this.collideRight(player,tile.left+tile.width)) return;
                     if( this.collideTop(player,tile.top)) return;
                     this.collideLeft(player,tile.left); break;
-            case 16: if(this.collideLeft(player,tile.left)) return;
+            case 31: if(this.collideLeft(player,tile.left)) return;
                     if(this.collideTop(player,tile.top)) return;
                     this.collideBottom(player,tile.top+tile.bottom); break;
 

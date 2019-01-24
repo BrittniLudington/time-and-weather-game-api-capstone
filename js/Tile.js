@@ -7,7 +7,7 @@ export let allTimeLocations = [];
 export default function Tile(number, w, h, ox, oy)
 {
     const tile = {};
-    tile.number = number - 6;
+    tile.number = number-1;
 
     tile.width = w;
     tile.height = h;
