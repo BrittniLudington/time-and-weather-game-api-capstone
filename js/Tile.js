@@ -3,6 +3,7 @@ import {player} from "./Player.js";
 
 
 export let allTimeLocations = [];
+let i = 0;
 
 export default function Tile(number, w, h, ox, oy)
 {
@@ -51,7 +52,12 @@ export default function Tile(number, w, h, ox, oy)
        // this.tempDraw(canvasContext);
       //  console.log(this.left, this.top, this.width, this.height);
         // x = cameraOffsetX + x*
-        canvasContext.drawImage(img,tempNum*scrWidth,locY*scrHeight,scrWidth,scrHeight,this.left,this.top,this.width,this.height);
+        if(i < 100)
+        {
+            console.log(img,(tempNum*scrWidth),(locY*scrHeight),scrWidth,scrHeight,this.left,this.top,this.width,this.height);
+            i++;
+        }
+        canvasContext.drawImage(img,(tempNum*scrWidth),(locY*scrHeight),scrWidth,scrHeight,this.left,this.top,this.width,this.height);
     };
     if(tile.number == 0) // time place
     {

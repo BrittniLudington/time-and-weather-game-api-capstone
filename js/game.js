@@ -85,13 +85,16 @@ function drawMap()
 function update()
 {
     //player.checkKeys();
+    context.clearRect(0,0,map.width,map.height);
+
     if(!time.status())
     {
       // game over
       console.log("you win!");
+      context.fillStyle = "#000000";
+      context.fillText("You win!", canvas.width/2,canvas.height/2);
       return;
     }
-    context.clearRect(0,0,map.width,map.height);
 
     time.update();
     player.checkKeys(camera.left,camera.right,camera.top,camera.bottom, map);

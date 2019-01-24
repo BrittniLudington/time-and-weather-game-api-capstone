@@ -98,7 +98,7 @@
               "row" : 22,
               "col" : 10,
         "firstgid":1,
-        "source" : "./img/spritesFull.png"
+        "source" : "img/spritesFull.png"
         }],
  "tilewidth":60,
  "type":"map",
