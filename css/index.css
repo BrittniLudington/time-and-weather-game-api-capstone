@@ -1,19 +1,30 @@
 
 #buttons
 {
+    display: flex;
+    flex-direction: row;
     position: absolute;
-    width:100px;
-    height:100px;
-    top:0;
-    bottom:0;
+    align-content: center;
+    justify-content: center;
+    top:50%;
+    bottom:30%;
     left:0;
     right:0;
     margin:auto;
 
 }
 
-h1
+#instructionsButton, #gameButton, #creditsButton
+{
+    margin-left:5%;
+    margin-right:5%;
+    width: 20%;
+    height: 20%;
+}
+
+header
 {
     text-align:center;
-
+    font-size:40px;
+    text-transform: uppercase;
 }
