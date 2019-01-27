@@ -16,6 +16,13 @@ $.ajax({
       removeElement(document.getElementById("dropDown"));
     data = result.features;
     api.dataTime = data;
+    if(result.features.length == 0)
+    {
+      let p = document.createElement("p");
+      p.appendChild(document.createTextNode("No locations of that name were found. Make sure everything is spelled correctly and the correct country code is used."));
+      document.getElementById("selection").appendChild(p);
+      return;
+    }
     if(result.features.length > 1)
     {
       let dropDown = document.createElement("select");
@@ -28,15 +35,30 @@ $.ajax({
       let p = document.createElement("p");
       p.appendChild(document.createTextNode("More than one location has that name. Please specify your selection in the drop down list and submit again."));
 
+      removeElement(document.getElementById("submitButton"));
       document.getElementById("selection").appendChild(p);
       document.getElementById("selection").appendChild(dropDown);
+      let newSubmit = document.createElement("button");
+      let submitNode = document.createTextNode("Submit");
+      newSubmit.setAttribute("id","submit2");
+      newSubmit.setAttribute("type","button");
+      newSubmit.appendChild(submitNode);
+
+      document.getElementById("selection").appendChild(newSubmit);
+      $('#submit2').click(function(event)
+      {
+          event.preventDefault();
+
+          let drop = document.getElementById("dropDown");
+          let obj = data[drop.options[drop.selectedIndex].value];
+          removeElement(drop);
+          removeElement(document.getElementById("p"));
+          removeElement(document.getElementById("submit2"));
+          getTime(obj, setUp);
+  
+      });
+
       return;
-    }
-    else if(result.features.length == 0)
-    {
-      let p = document.createElement("p");
-      p.appendChild(document.createTextNode("No locations of that name were found. Make sure everything is spelled correctly and the correct country code is used."));
-      document.getElementById("selection").appendChild(p);
     }
     else
       getTime(data[0], setUp);
@@ -111,7 +133,7 @@ function getWeather(obj, setUp)
     }
   })
   .done(result=>{
-      //console.log(result);
+      console.log(result);
       api.weather = result;
       setUp();
     })

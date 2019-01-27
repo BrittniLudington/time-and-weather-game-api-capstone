@@ -10,12 +10,13 @@ var map;
 let timeStr;
 let night = "#09162b";
 let globalAlpha = 0;
+let startKey = [];
+let keyPressed = false;
 
 $("#backButton").click(function()
 {
     window.location.href = "index.html";
 })
-
 
 window.onload = function ()
 {
@@ -40,30 +41,38 @@ function setUp()
   timeStr = api.time;
   timeStr = timeStr.slice(10);
   timeStr = timeStr.trim();
-  map = NewMap("./levels/mainLevel.json", drawMap);
+  context.fillText(timeStr,(0),(canvas.height/2));
+  context.fillText("Is this time correct?",(0),(canvas.height/2)+40);
+  //while(!startKey[89]){} // 89 == y
+  window.addEventListener("keydown",function(e)
+  {
+      e = e || event;
+      //console.log("key is " + e.key);
+      var Kkey = e.keyCode;
+      startKey[Kkey] = true;//e.type == 'keydown';
+      //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
+      if(startKey[89] && !keyPressed) // 89==y
+      {
+        startKey[89] = false;
+        keyPressed = true;
+        map = NewMap("./levels/mainLevel.json", drawMap);
+      }
+
+  }, true);
+  
+  
 }
 
 $("#submitButton").click(function(event)
 {
   event.preventDefault();
-  if(document.getElementById("dropDown") == null)
-  {
+
     let location = $("#town").val();
     let country = $("#country").val();
-
     api.getLatLong(location,country, setUp);
     //return;
-  }
-  else
-  {  
-    let drop = document.getElementById("dropDown");
-    let obj = api.dataTime[drop.options[drop.selectedIndex].value];
-    api.removeElement(drop);
-    api.removeElement(document.getElementById("p"));
-    api.getTime(obj, setUp);
-  }  
-  
 });
+
 
 
 function drawMap()
