@@ -1,4 +1,8 @@
 
+body
+{
+    background-color: palegoldenrod;
+}
 #buttons
 {
     display: flex;
@@ -19,12 +23,66 @@
     margin-left:5%;
     margin-right:5%;
     width: 20%;
-    height: 20%;
+    height: 30%;
+
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:20px;
+    border:black solid 1px;
+    background-color: palegoldenrod;
+    transition: background-color 1s, border-radius 1s, border 1s ease;
+
 }
+
+#instructionsButton:hover, #gameButton:hover, #creditsButton:hover
+{
+    background-color:white;
+    border-radius:25px;
+    border:none;
+}
+
 
 header
 {
     text-align:center;
-    font-size:40px;
+    font-size:60px;
     text-transform: uppercase;
+    margin-top:5%;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    font-family: 'Indie Flower';
+    background-color:white;
+    border-radius: 25px;
+}
+
+@media screen and (max-width:700px)
+{
+    #instructionsButton, #gameButton, #creditsButton
+{
+    margin-left:5%;
+    margin-right:5%;
+    width: 20%;
+    height: 50%;
+
+}
+}
+
+@media screen and (max-width:400px)
+{
+
+    header
+{
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+}
+    #instructionsButton, #gameButton, #creditsButton
+{
+    margin-left:5%;
+    margin-right:5%;
+    width: 20%;
+    height: 70%;
+
+}
 }
