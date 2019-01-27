@@ -1,8 +1,38 @@
+body
+{
+    background-color: palegoldenrod;
+}
 
 h1
 {
-    margin:auto;
-    text-align: center;
+
+        text-align:center;
+        font-size:60px;
+        text-transform: uppercase;
+        margin-top:5%;
+        width:50%;
+        margin-left:auto;
+        margin-right:auto;
+        font-family: 'Indie Flower';
+        background-color:white;
+        border-radius: 25px;
+}
+    
+#backButton
+{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:20px;
+    border:black solid 1px;
+    background-color: palegoldenrod;
+    transition: background-color 1s, border-radius 1s, border 1s ease;
+}
+
+#backButton:hover
+{
+    background-color:white;
+    border-radius:25px;
+    border:none;
 }
 
 #content
@@ -17,8 +47,9 @@ h1
 
 #keys
 {
-    float:left;
     width: 100%;
+    border:1px solid black;
+    margin:auto;
 }
 
 #start
@@ -31,18 +62,31 @@ h1
 
 #goal
 {
-    display:inline-block;
     margin-top:10px;
+    
     width:45%;
+    margin-right:5%;
     border:solid 1px black;
+}
+
+#start, #goal, #controls
+{
+    transition: background-color 1s ease;
+    padding-left:2%;
+}
+
+#start:hover, #goal:hover, #controls:hover
+{
+    background-color: white;
 }
 
 #controls
 {
+
     border:solid 1px black;
     margin-top:10px;
     width:45%;
-    display:inline-block;
+
 
 }
 
@@ -51,7 +95,19 @@ h1
     text-align:center;
 }
 
-@media screen and (max-width:600px)
+@media screen and (max-width:280px)
 {
-    
+    h1
+    {
+        font-size:40px;
+        width:70%;
+    }
+}
+
+@media screen and (max-width:560px)
+{
+    #goal
+    {
+        margin-right:4%;
+    }
 }
