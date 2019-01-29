@@ -2,6 +2,7 @@ import {player} from "./Player.js";
 import {camera} from "./Camera.js";
 import {time} from "./Time.js";
 import {api} from "./Data.js";
+import {animation} from "./Animation.js";
 //import {importLevel, map, getMapSize} from "./Map.js";
 import NewMap from "./NewMap.js";
 var canvas;
@@ -32,9 +33,20 @@ window.onload = function ()
     time.img.src = "./img/numberSprites.png";
     player.img = new Image();
     player.img.src = "./img/charSprite.png";
+    animation.sparkles = new Image();
+    animation.sparkles.src = "./img/sparkleSheet.png";
 
    console.log("end of main");
 }
+
+function setUpPartContinued()
+{
+  context.clearRect(0,0,canvas.width, canvas.height);
+  context.fillText("Loading...",0,(canvas.height/2));
+  context.clearRect(0,0,canvas.width, canvas.height);
+  map = NewMap("./levels/mainLevel.json", drawMap);
+}
+
 
 function setUp()
 {
@@ -43,6 +55,7 @@ function setUp()
   timeStr = timeStr.trim();
   context.fillText(timeStr,(0),(canvas.height/2));
   context.fillText("Is this time correct?",(0),(canvas.height/2)+40);
+  context.fillText("Press y if yes", 0,(canvas.height/2)+80);
   //while(!startKey[89]){} // 89 == y
   window.addEventListener("keydown",function(e)
   {
@@ -57,13 +70,16 @@ function setUp()
         keyPressed = true;
         context.clearRect(0,0,canvas.width, canvas.height);
         context.fillText("Loading...",0,(canvas.height/2));
-        map = NewMap("./levels/mainLevel.json", drawMap);
+        //animation.intro(context,timeStr,canvas.width,canvas.height, setUpPartContinued);
+        setUpPartContinued();
+        
       }
 
   }, true);
   
   
 }
+
 
 $("#submitButton").click(function(event)
 {
