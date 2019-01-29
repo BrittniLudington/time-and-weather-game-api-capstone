@@ -55,6 +55,8 @@ function setUp()
       {
         startKey[89] = false;
         keyPressed = true;
+        context.clearRect(0,0,canvas.width, canvas.height);
+        context.fillText("Loading...",0,(canvas.height/2));
         map = NewMap("./levels/mainLevel.json", drawMap);
       }
 

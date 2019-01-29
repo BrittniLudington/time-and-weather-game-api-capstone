@@ -3,6 +3,7 @@
     position: relative;
     width :50%;
     margin:auto;
+
 }
 
 #selection
@@ -14,9 +15,29 @@
     line-height: 30px;
 }
 
+#backButton
+{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size:20px;
+    width:20%;
+    border:black solid 1px;
+    background-color: palegoldenrod;
+    transition: background-color 1s, border-radius 1s, border 1s ease;
+}
+
+#backButton:hover
+{
+    background-color:white;
+    border-radius:25px;
+    border:none;
+}
+
+
 body
 {
     margin-top:2%;
+    background-color:palegoldenrod;
 }
 
 #countriesHere
@@ -44,4 +65,20 @@ body
     left: 0px;
     top: 0px;
     border: solid 1px black;
+}
+
+@media screen and (max-width:375px)
+{
+    #backButton
+    {
+        width:30%;
+    }
+}
+
+@media screen and (max-width:250px)
+{
+    #backButton
+    {
+        width:100%;
+    }
 }
