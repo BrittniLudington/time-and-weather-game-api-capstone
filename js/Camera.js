@@ -136,7 +136,7 @@ export const camera =
         let keyDown = false;
         if(this.playerToRight())//key[37] && !this.playerToRight())
         {
-            if(this.left >=0)
+            if(this.left >0)
             {
                 this.offsetX+= player.center[0] - this.center[0];
                     //this.offsetX+=player.speed;
@@ -146,7 +146,7 @@ export const camera =
         if(this.playerBelow())//key[38] && !this.playerBelow())
         {
 
-            if(this.top >= 0)
+            if(this.top > 0)
             {
                 this.offsetY+= player.center[1] - this.center[1];
                     //this.offsetY+=player.jumpSpeed;
@@ -155,7 +155,7 @@ export const camera =
         }
         if(this.playerToLeft())//key[39] && !this.playerToLeft())
         {
-            if(this.right <= this.map[0])
+            if(this.right < this.map[0])
             {
                 this.offsetX-= this.center[0] - player.center[0];
                     //this.offsetX-=player.speed;
@@ -164,7 +164,7 @@ export const camera =
         }
         if(this.playerAbove())//key[40] && !this.playerAbove())
         {
-            if(this.bottom <= this.map[1])
+            if(this.bottom < this.map[1])
             {
                 this.offsetY-= this.center[1] - player.center[1];
                     //this.offsetY-=player.gravitySpeed;
