@@ -18,6 +18,11 @@ body
 
 }
 
+#intro
+{
+    text-align: center;
+}
+
 #instructionsButton, #gameButton, #creditsButton
 {
     margin-left:5%;

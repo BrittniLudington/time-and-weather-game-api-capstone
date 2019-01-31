@@ -1,8 +1,12 @@
+import {camera} from "./Camera.js";
+
 export const animation = 
 {
     sparkles : null,
     gravity : 0.5,
     gravitySpeed : 0,
+    delta : 0.01,
+    alpha : 0,
     update : function(context,paths, width, height, callBack)
     {
         let speedY = 10;
@@ -32,6 +36,21 @@ export const animation =
         requestAnimationFrame(function(){
             animation.update(context,paths, width, height, callBack);
         });
+    },
+
+    end : function(context,width,height,time)
+    {
+        context.clearRect(camera.left,camera.top,camera.width,camera.height);
+        if(this.alpha < 1)
+            this.alpha += this.delta;
+        context.globalAlpha = this.alpha;
+        context.fillStyle = "#000000";
+        context.fillRect(camera.left,camera.top,camera.width,camera.height);
+        context.globalAlpha = 1;
+        context.fillStyle = "#ffffff";
+        context.fillText("You Win!", camera.left, (camera.height/2)-40);
+        context.fillText("Time taken : " + time + " seconds", camera.left, camera.height/2);
+        requestAnimationFrame(function(){animation.end(context,width,height,time)});
     },
 
     intro : function(context, timeStr, width, height, callBack)
@@ -77,14 +96,4 @@ export const animation =
     
     
 
-}
-
-function timer(num)
-{
-    if(num < 3)
-    {
-    console.log(num);
-    num++;
-    timer(num);
-    }
 }

@@ -45,6 +45,7 @@ function setUpPartContinued()
   context.fillText("Loading...",0,(canvas.height/2));
   context.clearRect(0,0,canvas.width, canvas.height);
   map = NewMap("./levels/mainLevel.json", drawMap);
+  time.startTimer();
 }
 
 
@@ -94,6 +95,7 @@ function drawMap()
 
 function update()
 {
+  
     //player.checkKeys();
     context.clearRect(0,0,map.width,map.height);
 
@@ -102,7 +104,7 @@ function update()
       // game over
       console.log("you win!");
       context.fillStyle = "#000000";
-      context.fillText("You win!", canvas.width/2,canvas.height/2);
+      requestAnimationFrame(function(){animation.end(context,canvas.width,canvas.height,time.endTimer());});
       return;
     }
 

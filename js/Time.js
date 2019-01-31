@@ -9,6 +9,8 @@ export const time =
     width : 0,
     color : "#FFFF00",
     img : "",
+    start : 0,
+    end : 0,
 
     setTime : function(string, w, h)
     {
@@ -20,6 +22,18 @@ export const time =
         this.second = makeNumber(array[2], 1);
 
 
+    },
+
+    startTimer : function()
+    {
+        this.start = new Date();
+    },
+
+    endTimer : function()
+    {
+        this.end = new Date() - this.start;
+
+        return (this.end / 1000).toFixed(1);
     },
 
     getLight : function()
