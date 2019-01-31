@@ -53,29 +53,12 @@ function setUp()
   timeStr = api.time;
   timeStr = timeStr.slice(10);
   timeStr = timeStr.trim();
-  context.fillText(timeStr,(0),(canvas.height/2));
-  context.fillText("Is this time correct?",(0),(canvas.height/2)+40);
-  context.fillText("Press y if yes", 0,(canvas.height/2)+80);
+
   //while(!startKey[89]){} // 89 == y
-  window.addEventListener("keydown",function(e)
-  {
-      e = e || event;
-      //console.log("key is " + e.key);
-      var Kkey = e.keyCode;
-      startKey[Kkey] = true;//e.type == 'keydown';
-      //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-      if(startKey[89] && !keyPressed) // 89==y
-      {
-        startKey[89] = false;
-        keyPressed = true;
         context.clearRect(0,0,canvas.width, canvas.height);
         context.fillText("Loading...",0,(canvas.height/2));
         //animation.intro(context,timeStr,canvas.width,canvas.height, setUpPartContinued);
         setUpPartContinued();
-        
-      }
-
-  }, true);
   
   
 }

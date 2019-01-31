@@ -26,6 +26,10 @@ h1
     border:black solid 1px;
     background-color: palegoldenrod;
     transition: background-color 1s, border-radius 1s, border 1s ease;
+    position: absolute;
+    left:0;
+    top:0;
+
 }
 
 #backButton:hover
@@ -109,5 +113,22 @@ h1
     #goal
     {
         margin-right:4%;
+    }
+}
+
+@media screen and (max-width:770px)
+{
+    #backButton
+    {
+        width:20%;
+    }
+}
+
+@media screen and (max-width:330px)
+{
+    #backButton
+    {
+        width:100%;
+        position: relative;
     }
 }

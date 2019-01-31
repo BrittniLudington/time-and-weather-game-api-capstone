@@ -11,6 +11,9 @@ body
     border:black solid 1px;
     background-color: palegoldenrod;
     transition: background-color 1s, border-radius 1s, border 1s ease;
+    position: absolute;
+    left:0;
+    top:0;
 }
 
 #backButton:hover
@@ -19,3 +22,41 @@ body
     border-radius:25px;
     border:none;
 }
+
+#content
+{
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+    width:50%;
+    text-align: center;
+}
+
+#link
+{
+    white-space: pre-wrap; /* css-3 */    
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */    
+    white-space: -o-pre-wrap; /* Opera 7 */    
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    /* got this from https://stackoverflow.com/questions/5241369/word-wrap-a-link-so-it-doesnt-overflow-its-parent-div-width*/
+}
+
+
+@media screen and (max-width:210px)
+{
+    #backButton
+    {
+        width:100%;
+        position: relative;
+    }
+}
+
+@media screen and (max-width:300px)
+{
+    #content
+    {
+        width:100%;
+    }
+}
+

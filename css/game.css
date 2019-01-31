@@ -24,6 +24,9 @@
     border:black solid 1px;
     background-color: palegoldenrod;
     transition: background-color 1s, border-radius 1s, border 1s ease;
+    position: absolute;
+    left:0;
+    top:0;
 }
 
 #backButton:hover
@@ -71,14 +74,8 @@ body
 {
     #backButton
     {
-        width:30%;
+        width:100%;
+        position: relative;
     }
 }
 
-@media screen and (max-width:250px)
-{
-    #backButton
-    {
-        width:100%;
-    }
-}
