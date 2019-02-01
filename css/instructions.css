@@ -1,11 +1,14 @@
-body
-{
-    background-color: palegoldenrod;
+*{
     margin: 0;
         padding: 0;
         border: 0;
         box-sizing: border-box;
     
+}
+body
+{
+    background-color: palegoldenrod;
+
     
     
     
@@ -58,26 +61,34 @@ h1
     border:none;
 }
 
+#start, #goal, #controls
+{
+    transition: background-color 1s ease;
+    text-align: left;
 
+}
 
 #keys
 {
-    margin: auto;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
-    box-sizing: border-box;
-
+    display:block;
+   
+    width:100%;
     /*reset Chrome user agent styles*/
     
 }
 
+#start, #goal, #controls
+{
+    padding:2%;
+    transition: background-color 1s ease;
+    text-align: left;
+
+}
+
 #start
 {
-
     width:100%;
-    border:solid 1px black;
+    border-bottom:solid 1px black;
 
 }
 
@@ -89,12 +100,7 @@ h1
 
 }
 
-#start, #goal, #controls
-{
-    transition: background-color 1s ease;
-    text-align: left;
 
-}
 
 #start:hover, #goal:hover, #controls:hover
 {
@@ -103,9 +109,9 @@ h1
 
 #controls
 {
-    padding-left:2%;
     margin-top:10px;
     width:50%;
+    border-left:solid 1px black;
 }
 
 #center
@@ -142,6 +148,8 @@ h1
 {
     #keys
     {
+        margin-left:auto;
+        margin-right:auto;
         width:70%;
 
     }
