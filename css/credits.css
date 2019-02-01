@@ -42,6 +42,11 @@ body
     /* got this from https://stackoverflow.com/questions/5241369/word-wrap-a-link-so-it-doesnt-overflow-its-parent-div-width*/
 }
 
+ul
+{
+    list-style-type: none;
+}
+
 
 @media screen and (max-width:210px)
 {
