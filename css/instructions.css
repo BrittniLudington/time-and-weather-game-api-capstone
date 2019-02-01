@@ -1,6 +1,14 @@
 body
 {
     background-color: palegoldenrod;
+    margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+    
+    
+    
+    
 }
 
 #content
@@ -11,6 +19,7 @@ body
     margin:auto;
     width:75%;
     height:100%;
+    text-align:center;
 }
 
 h1
@@ -75,15 +84,15 @@ h1
 #goal
 {
     margin-top:10px;
-    
     width:45%;
     margin-right:2%;
-    border:solid 1px black;
+
 }
 
 #start, #goal, #controls
 {
     transition: background-color 1s ease;
+    text-align: left;
 
 }
 
@@ -94,8 +103,7 @@ h1
 
 #controls
 {
-
-    border:solid 1px black;
+    padding-left:2%;
     margin-top:10px;
     width:50%;
 }
