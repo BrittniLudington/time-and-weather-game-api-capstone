@@ -3,6 +3,16 @@ body
     background-color: palegoldenrod;
 }
 
+#content
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:auto;
+    width:75%;
+    height:100%;
+}
+
 h1
 {
 
@@ -39,21 +49,19 @@ h1
     border:none;
 }
 
-#content
-{
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin:auto;
-    width:75%;
-    height:100%;
-}
+
 
 #keys
 {
-    width: 100%;
-    border:1px solid black;
-    margin:auto;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+
+    /*reset Chrome user agent styles*/
+    
 }
 
 #start
@@ -69,14 +77,14 @@ h1
     margin-top:10px;
     
     width:45%;
-    margin-right:5%;
+    margin-right:2%;
     border:solid 1px black;
 }
 
 #start, #goal, #controls
 {
     transition: background-color 1s ease;
-    padding-left:2%;
+
 }
 
 #start:hover, #goal:hover, #controls:hover
@@ -89,9 +97,7 @@ h1
 
     border:solid 1px black;
     margin-top:10px;
-    width:45%;
-
-
+    width:50%;
 }
 
 #center
@@ -123,6 +129,16 @@ h1
         width:20%;
     }
 }
+
+@media screen and (max-width:840px)
+{
+    #keys
+    {
+        width:70%;
+
+    }
+}
+
 
 @media screen and (max-width:330px)
 {
