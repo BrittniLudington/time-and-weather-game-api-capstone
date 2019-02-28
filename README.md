@@ -2,6 +2,8 @@
 
 App game utilizing timezone and weather APIs. After selecting a timezone the user searches and captures the time digits in the game. The shorter the time taken the higher the ending score.
 
+[Link to Demo](https://brittniludington.github.io/time-and-weather-game-api-capstone/)
+
 ## Technology and Languages used
 * JavaScript
 * HTML5
@@ -84,3 +86,12 @@ App game utilizing timezone and weather APIs. After selecting a timezone the use
 	I want to ensure that the creators of the APIs used get the proper recognition
 
 
+## Screenshots:
+
+ ![One](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/screenshots/one.PNG?raw=true)
+
+![Two](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/screenshots/two.PNG?raw=true)
+
+![Three](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/screenshots/three.PNG?raw=true)
+
+![Four](https://github.com/BrittniLudington/time-and-weather-game-api-capstone/blob/master/ReadMeImgs/screenshots/four.PNG?raw=true)
