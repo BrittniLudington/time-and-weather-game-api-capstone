@@ -1,7 +1,5 @@
 import Layer from "./Layer.js";
 
-var state = false;
-
 export default function NewMap(name, callback)
 {
         const map = {};
@@ -81,7 +79,6 @@ export default function NewMap(name, callback)
                         //canvasContext.restore();
                         
                     };
-                    state = true;
                     callback();
                 }
             }
@@ -93,10 +90,3 @@ export default function NewMap(name, callback)
         return map;
 }
 
-
-function loadLevel(name)
-{
-    return fetch('./levels/' + name +'.json')
-    .then(r => r.json());
-
-}

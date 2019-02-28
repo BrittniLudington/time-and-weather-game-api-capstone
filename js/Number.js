@@ -18,10 +18,7 @@ export default function makeNumber(num, h)
     newNumber.top = allTimeLocations[loc].y;
     allTimeLocations[loc].isTaken = true;
     newNumber.bottom = newNumber.top+newNumber.bottom;
-    newNumber.gravitySpeed = 0;
-    newNumber.gravity = 0.1;
-    newNumber.speed = 5;
-    newNumber.direction = 1;
+
     newNumber.color = "#FFFF00";
     newNumber.damageColor = "#FF0000";
     newNumber.isAlive = true;

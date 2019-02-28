@@ -28,25 +28,7 @@ export default function Layer(data, tileWidth, tileHeight)
 
     layer.draw = function(canvasContext, img, scrCol, scrWidth, scrHeight)
     {
-        /*let v = 0;
-        for(let i = 0; i < this.height; i++)
-        {
-            for(let j = 0; j < this.width; j++)
-            {
-                this.tiles[i][j].draw(canvasContext,img,scrCol,scrWidth,scrHeight);
-                v++;
-            }
-        }
-        console.log("tiles drawn : " + v);
-        */
-        //culling idea:
-        /*
-            let i = camerabytile.top
-            let j = camerabytile.left
-            while i <= camerabytile.top+camerabyTile.height
-            and while j <= camerabytile.left+camerabytile.width
-            draw tile[i][j]
-        */
+       
        let camBottom = Math.floor(camera.cameraByTile.top+camera.cameraByTile.height);
        let camRight = Math.floor(camera.cameraByTile.left+camera.cameraByTile.width);
 

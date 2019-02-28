@@ -95,7 +95,8 @@ function getTime(obj, setUp)
     {
       console.log(result.formatted);
       api.time = result.formatted;
-      getWeather(obj, setUp);
+      setUp();
+     // getWeather(obj, setUp);
       //context.fillText(result.formatted,10,50);
       
     },
@@ -108,40 +109,6 @@ function getTime(obj, setUp)
   
 }
 
-function getWeather(obj, setUp)
-{
-  let latLong = obj.geometry.coordinates;
-  
-  let k = "818698fa35930837216dd12ab31dc568";
-  $.ajax({
-    url : "https://api.openweathermap.org/data/2.5/weather",  
-    method : "GET",
-    dataType : 'JSON',
-    data:
-    {
-      //'APPID': k,
-      lat : latLong[1],
-      lon : latLong[0],
-      units: "Imperial",
-      //'id':'2172797',
-      'APPID':'818698fa35930837216dd12ab31dc568'
-    }
-    ,
-    async: false,
-    headers: {
-      Accept: 'application/json',
-    }
-  })
-  .done(result=>{
-      console.log(result);
-      api.weather = result;
-      setUp();
-    })
-  .fail(err => {
-      console.log("error");
-      console.log(err);
-    });
-}
 
 function removeElement(element)
 {
@@ -153,9 +120,7 @@ export const api =
 {
     getLatLong : getLatLong,
     getTime : getTime,
-    getWeather : getWeather,
     removeElement : removeElement,
     dataTime : data,
-    weather : "",
     time : ""
 };

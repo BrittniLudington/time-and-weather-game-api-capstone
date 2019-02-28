@@ -47,9 +47,6 @@ export default function Tile(number, w, h, ox, oy)
             tempNum = tempNum - scrCol;
             locY++;
         }
-       // this.tempDraw(canvasContext);
-      //  console.log(this.left, this.top, this.width, this.height);
-        // x = cameraOffsetX + x*
 
         canvasContext.drawImage(img,(tempNum*scrWidth),(locY*scrHeight),scrWidth,scrHeight,this.left,this.top,this.width,this.height);
     };

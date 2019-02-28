@@ -53,14 +53,6 @@ body
     display:inline;
 }
 
-#objects
-{
-    position: absolute;
-    z-index: 2;
-    left: 0px;
-    top: 0px;
-}
-
 #winText
 {
     text-align: center;

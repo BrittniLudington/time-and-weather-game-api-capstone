@@ -82,10 +82,6 @@ export const collision =
     {
         let oldBottom = player.oldPos[1]+player.height;
 
-        //console.log("player.bottom: " + player.bottom + ", oldPos: " + player.oldPos[1]+player.height);
-        //console.log("tile top: " + tile_top);
-        //console.log(player.oldPos[1]+player.height);
-
         if(player.bottom > tile_top && oldBottom <= tile_top)
         {
             player.bottom = tile_top - 0.01;

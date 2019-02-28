@@ -50,11 +50,8 @@ export const camera =
             this.cameraByTile.left = 0;
         this.center[0] = this.left + (this.width/2);
         this.center[1] = this.top + (this.height/2);
-     //   console.log(this.center[0] + ", " + this.center[1]);
-       // console.log("left:" + this.left + ", right: " + this.right + ", top: "+ this.top + ", bottom: " + this.bottom);
         context.save();
         context.translate(-this.offsetX,-this.offsetY);
-     //   context.restore();
         context.clearRect(-this.offsetX,-this.offsetY,this.width,this.height);
         
 
@@ -69,17 +66,17 @@ export const camera =
         return player.center[0] < this.center[0];
     },
 
-    playerToRight : function()// if player is to left of camera center, return true
+    playerToRight : function()// if player is to right of camera center, return true
     {
         return player.center[0] > this.center[0];
     },
 
-    playerAbove : function()// if player is to left of camera center, return true
+    playerAbove : function()// if player is above camera center, return true
     {
         return player.center[1] < this.center[1];
     },
 
-    playerBelow : function()// if player is to left of camera center, return true
+    playerBelow : function()// if player is below camera center, return true
     {
         return player.center[1] > this.center[1];
     },
@@ -92,7 +89,6 @@ export const camera =
         this.bottom = this.top + height;
         this.map[0] = mapW;
         this.map[1] = mapH;
-        // we know tiles are 30x30
         this.cameraByTile.width =  (this.width / 60)+2;
         this.cameraByTile.height = (this.height / 60)+2;
         this.center[0] = this.left + (this.width/2);
