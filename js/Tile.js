@@ -1,5 +1,3 @@
-import {camera} from "./Camera.js";
-import {player} from "./Player.js";
 
 
 export let allTimeLocations = [];

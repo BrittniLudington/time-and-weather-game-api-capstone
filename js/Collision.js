@@ -47,7 +47,7 @@ export const collision =
            if((player.left >= number.left && player.left <= number.right) || 
             (player.left <= number.left && player.right >= number.left))
             {
-                player.gravitySpeed = -player.gravitySpeed;
+                player.gravitySpeed = -4;//-player.gravitySpeed+2;
                 number.hit();
             }
            

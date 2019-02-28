@@ -1,25 +1,6 @@
 import { player } from "./Player.js";
 
 
-var key = {};
-
-window.addEventListener("keydown",function(e)
-{
-    e = e || event;
-    //console.log("key is " + e.key);
-    var Kkey = e.keyCode;
-    key[Kkey] = true;//e.type == 'keydown';
-    //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-}, true);
-
-window.addEventListener("keyup",function(event)
-{
-    var Kkey = event.keyCode;
-    key[Kkey] = false;
-    //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-});
-
-
 export const camera = 
 {
     left : 0, // x and y in relation to map
@@ -184,24 +165,3 @@ export const camera =
     }
 };
 
-/*export default class Camera
-{
-    constructor(width, height)
-    {
-        this.x = 0;
-        this.y = 0;
-        this.width = width;
-        this.height = height;
-        // add in maxX and maxY later
-    }
-    update(map)
-    {
-        var startCol = Math.floor(this.x / map.tSize);
-        var endCol = startCol + (this.width / map.tSize);
-        var startRow = Math.floor(this.y / map.tSize);
-        var endRow = startRow + (this.height / map.tSize);
-        var offsetX = -this.x + startCol * map.tSize;
-        var offsetY = -this.y + startRow * map.tSize;
-    }
-}
-*/

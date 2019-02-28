@@ -1,26 +1,31 @@
 import {camera} from "./Camera.js";
 import {collision} from "./Collision.js";
 import {time} from "./Time.js";
+import {timer} from "./Timer.js";
 var key = {};
 
-
-window.addEventListener("keydown",function(e)
-{
-    e = e || event;
-    //console.log("key is " + e.key);
-    var Kkey = e.keyCode;
-    key[Kkey] = true;//e.type == 'keydown';
-    //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-}, true);
-
-window.addEventListener("keyup",function(event)
-{
-    var Kkey = event.keyCode;
-    key[Kkey] = false;
-    //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-});
-
 let count;
+
+function handleListeners()
+{
+    window.addEventListener("keydown",function(e)
+    {
+        e = e || event;
+        //console.log("key is " + e.key);
+        var Kkey = e.keyCode;
+        key[Kkey] = true;//e.type == 'keydown';
+        //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
+    }, true);
+    
+    window.addEventListener("keyup",function(event)
+    {
+        var Kkey = event.keyCode;
+        key[Kkey] = false;
+        //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
+    });
+    
+}
+
 
 export const player =
 {
@@ -65,6 +70,8 @@ export const player =
         this.collisionTile.width = tW;
         this.map[0] = mW;
         this.map[1] = mH;
+        count = 0;
+        handleListeners();
     },
 
     setLocation: function(map)//x,y)
@@ -262,7 +269,7 @@ export const player =
 // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
         context.drawImage(this.img,this.pos*60,this.direction*60,60,60,this.left,this.top,this.width,this.height);
         count++;
-        if(count >= 500)
+       /* if(count >= 500)
         {
             if(this.pos != 11)
                 this.pos++;
@@ -270,9 +277,13 @@ export const player =
                 this.pos = 0;
             count = 0;
         }
-        //context.fillStyle = "#FF0000";
-        //context.fillRect(this.left,this.top,this.width,this.height);
-       // context.restore();
+        */
+       if(timer.checkFrame())
+       {
+           this.pos++;
+           if(this.pos >= 11)
+               this.pos = 0;
+       }
     }
     
 }

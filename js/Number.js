@@ -23,8 +23,10 @@ export default function makeNumber(num, h)
     newNumber.speed = 5;
     newNumber.direction = 1;
     newNumber.color = "#FFFF00";
+    newNumber.damageColor = "#FF0000";
     newNumber.isAlive = true;
     newNumber.health = h;
+    newNumber.isHit = false;
 
     newNumber.getTime = function()
     {
@@ -35,13 +37,17 @@ export default function makeNumber(num, h)
     {
         console.log("health: " + newNumber.health);
         newNumber.health --;
+        setTimeout(function(){
+            newNumber.isHit = false;
+        },500);
+        newNumber.isHit = true;
         if(newNumber.health <= 0)
             this.isAlive = false;
     }
 
     newNumber.draw = function(context, image)
     {
-        if(this.isAlive)
+        if(this.isAlive && !this.isHit)
         {
             context.drawImage(image,this.val[0]*30,0,30,60,this.left,this.top,30,60);
             context.drawImage(image,this.val[1]*30,0,30,60,this.left+30,this.top,30,60);

@@ -49,13 +49,6 @@ export const time =
         return this.second.isAlive || this.minute.isAlive || this.hour.isAlive;
     },
 
-    update : function()
-    {
-        //this.hour.update(this.width);
-        //this.minute.update(this.width);
-        //this.second.update(this.width);
-    },
-
     draw : function(context)
     {
         this.hour.draw(context, this.img);
