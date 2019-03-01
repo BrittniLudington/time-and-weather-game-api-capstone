@@ -48,10 +48,9 @@ h1
     border:black solid 1px;
     background-color: palegoldenrod;
     transition: background-color 1s, border-radius 1s, border 1s ease;
-    position: absolute;
     left:0;
     top:0;
-
+    width: 20%;
 }
 
 #backButton:hover
@@ -59,13 +58,6 @@ h1
     background-color:white;
     border-radius:25px;
     border:none;
-}
-
-#start, #goal, #controls
-{
-    transition: background-color 1s ease;
-    text-align: left;
-
 }
 
 #keys
@@ -119,7 +111,7 @@ h1
     text-align:center;
 }
 
-@media screen and (max-width:280px)
+@media screen and (max-width:350px)
 {
     h1
     {
@@ -134,26 +126,23 @@ h1
     {
         margin-right:4%;
     }
-}
-
-@media screen and (max-width:770px)
-{
     #backButton
     {
-        width:20%;
+        width:50%;
     }
-}
-
-@media screen and (max-width:840px)
-{
+    #start, #goal, #controls
+    {
+        padding:0%;
+    }
     #keys
     {
-        margin-left:auto;
-        margin-right:auto;
-        width:70%;
-
+        width:100%;
+        margin:auto;
     }
 }
+
+
+
 
 
 @media screen and (max-width:330px)
