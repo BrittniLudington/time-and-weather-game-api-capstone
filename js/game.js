@@ -59,6 +59,7 @@ function setUp()
   timeStr = timeStr.slice(10);
   timeStr = timeStr.trim();
 
+  resizeCanvas();
   //while(!startKey[89]){} // 89 == y
         context.clearRect(0,0,canvas.width, canvas.height);
         context.fillText("Loading...",0,(canvas.height/2));
@@ -73,6 +74,12 @@ function setUp()
   
 }
 
+function resizeCanvas()
+{
+  $("#canvasDiv").width("100%");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
 function drawMap()
 {

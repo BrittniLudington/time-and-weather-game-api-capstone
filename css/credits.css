@@ -45,21 +45,16 @@ body
 ul
 {
     list-style-type: none;
+    padding: 0;
 }
 
-
-@media screen and (max-width:210px)
-{
-    #backButton
-    {
-        width:100%;
-        position: relative;
-    }
-}
-
-@media screen and (max-width:300px)
+@media screen and (max-width:330px)
 {
     #content
+    {
+        width:100%;
+    }
+    #backButton
     {
         width:100%;
     }

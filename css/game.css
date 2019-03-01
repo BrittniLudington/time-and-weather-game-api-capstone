@@ -1,3 +1,10 @@
+html, body
+{
+    min-height:100%;
+    margin:0;
+    min-width: 100%;
+    overflow:auto;
+}
 #canvasDiv
 {
     position: relative;
@@ -24,7 +31,6 @@
     border:black solid 1px;
     background-color: palegoldenrod;
     transition: background-color 1s, border-radius 1s, border 1s ease;
-    position: absolute;
     left:0;
     top:0;
 }
@@ -64,15 +70,36 @@ body
     left: 0px;
     top: 0px;
     border: solid 1px black;
+    width : 100%;
 }
 
 @media screen and (max-width:375px)
 {
+    body
+    {
+        width:100%;
+    }
     #backButton
     {
         width:100%;
         position: relative;
+        top:0;
     }
 }
 
+/*@media screen and (max-width:710px)
+{
+    #canvasDiv
+    {
+    position: relative;
+    width :50%;
+    margin:auto;
 
+    }
+    #canvas
+    {
+        width: 100%;
+    }
+
+}
+*/
