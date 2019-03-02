@@ -69,11 +69,26 @@ body
 
     left: 0px;
     top: 0px;
-    border: solid 1px black;
     width : 100%;
 }
 
-@media screen and (max-width:375px)
+#warning
+{
+    position: absolute;
+    top: 0;
+}
+
+#winText
+{
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    margin:auto;
+    color: white;
+}
+
+@media screen and (max-width:330px)
 {
     body
     {

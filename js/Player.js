@@ -2,29 +2,7 @@ import {camera} from "./Camera.js";
 import {collision} from "./Collision.js";
 import {time} from "./Time.js";
 import {timer} from "./Timer.js";
-var key = {};
-
-let count;
-
-function handleListeners()
-{
-    window.addEventListener("keydown",function(e)
-    {
-        e = e || event;
-        //console.log("key is " + e.key);
-        var Kkey = e.keyCode;
-        key[Kkey] = true;//e.type == 'keydown';
-        //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-    }, true);
-    
-    window.addEventListener("keyup",function(event)
-    {
-        var Kkey = event.keyCode;
-        key[Kkey] = false;
-        //console.log("key's" + Kkey + " log" + " is " + key[Kkey]);
-    });
-    
-}
+import {controls} from "./Controls.js";
 
 
 export const player =
@@ -70,8 +48,8 @@ export const player =
         this.collisionTile.width = tW;
         this.map[0] = mW;
         this.map[1] = mH;
-        count = 0;
-        handleListeners();
+        controls.setKeyboard();
+
     },
 
     setLocation: function(map)//x,y)
@@ -165,7 +143,7 @@ export const player =
 
 
         //this.collided(map);
-        if(key[37])
+        if(controls.key[37])
         {
             this.direction = 2;
             for(let i = 0; i < numSteps; i++)
@@ -184,7 +162,7 @@ export const player =
                 }
 
         }
-        if(key[39])
+        if(controls.key[39])
         {
             this.direction = 3;
             for(let i = 0; i < numSteps; i++)
@@ -204,7 +182,7 @@ export const player =
 
         }
 
-        if(key[38])
+        if(controls.key[38])
         {
 
             for(let i = 0; i < numSteps; i++)
@@ -229,7 +207,7 @@ export const player =
 
         }
 
-       if(key[40])
+       if(controls.key[40])
         {
             for(let i = 0; i < numSteps; i++)
             {
@@ -251,9 +229,9 @@ export const player =
             this.gravitySpeed = 0;
         }
 
-        if(this.direction == 2 && !key[37])
+        if(this.direction == 2 && !controls.key[37])
             this.direction = 0;
-        if(this.direction == 3 && !key[39])
+        if(this.direction == 3 && !controls.key[39])
             this.direction = 1;
        
         this.collided(map);
@@ -268,7 +246,6 @@ export const player =
         context.fillStyle = "#800080";
 // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
         context.drawImage(this.img,this.pos*60,this.direction*60,60,60,this.left,this.top,this.width,this.height);
-        count++;
        /* if(count >= 500)
         {
             if(this.pos != 11)

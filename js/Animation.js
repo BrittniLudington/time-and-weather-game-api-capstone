@@ -14,7 +14,7 @@ export const animation =
         let text = "<section role = 'win text' id='winText'><h1>You Win!</h1>";
         text += "<h2> Time taken : " + time + " seconds</section>";
 
-        $("body").append(text);
+        $("#canvasDiv").append(text);
     },
 
     end : function(context,width,height)

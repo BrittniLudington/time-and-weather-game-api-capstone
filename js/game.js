@@ -19,11 +19,11 @@ function loadPage()
   handleButtons();
   $("#town").before("Town: ");
   $("#countriesHere").before("Country: ");
+  $("#controlType").before("Control Scheme: ");
   $("#countriesHere").load("Countries.html");
     canvas = document.getElementById('canvas');
 
     context = canvas.getContext('2d');   
-    context.font = "40px Ariel";
     time.img = new Image();
     time.img.src = "./img/numberSprites.png";
     player.img = new Image();
@@ -84,9 +84,11 @@ function resizeCanvas()
 function drawMap()
 {
     //console.log(context);
+
     api.removeElement(document.getElementById("town"));
     api.removeElement(document.getElementById("countriesHere"));
     api.removeElement(document.getElementById("selection"));
+    api.removeElement(document.getElementById("warning"));
     map.drawMap(context);
     player.set(map.tilewidth-5,map.tileheight-5, map.tilewidth, map.tileheight, map.width,map.height);
     player.setLocation(map);//camera.right / 2, camera.height / 2);
@@ -125,18 +127,22 @@ function update()
       context.clearRect(0,0,map.width,map.height);
 
       map.drawMap(context);
-      context.fillStyle = time.color;
-      context.fillText(timeStr,camera.left+10,camera.top+40);
       time.draw(context);
         player.draw(context);
+        if(globalAlpha != 0)
+        {
+          context.globalAlpha = globalAlpha;
+          context.fillStyle = night;
+          context.fillRect(camera.left,camera.top,camera.width,camera.height);
+          context.globalAlpha = 1.0;
+        }
+        context.font = "40px Ariel";
+
+        context.fillStyle = time.color;
+        context.fillText(timeStr,camera.left+10,camera.top+40);
+
     }
-    if(globalAlpha != 0)
-    {
-      context.globalAlpha = globalAlpha;
-      context.fillStyle = night;
-      context.fillRect(camera.left,camera.top,camera.width,camera.height);
-      context.globalAlpha = 1.0;
-    }
+
     //context.restore();
     //player.draw(context);
 
