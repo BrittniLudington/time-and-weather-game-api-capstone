@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Time Catcher</title>
         <meta name="description" content="Fun little platform game"></meta>
@@ -11,14 +11,14 @@
     </head>
     <body>
         <button id="backButton">Return to main Page</button>
-            <form id = "selection">
+            <form id = "selection" role="input information here">
                 <p>Input the name of your home town below and select the country it is in from the drop down menu.<br />
                 On submitting, the game will use the current time in that area.</p>
                 <input type="text" id="town" name="townName" placeholder="Town name"><br>
                 <div id="countriesHere"></div><br>
                   <button id="submitButton">Submit</button>
                     </form>
-        <div id = "canvasDiv">
+        <div id = "canvasDiv" role="game canvas">
             <!--<canvas id = "objects" width = "500px" height = "500px"></canvas>-->
             <canvas id = "canvas" width = "500px" height = "500px"></canvas>
             <h2 id="warning">NOTE: This game uses Keyboard controls only. It cannot be played on Mobile.</h2>

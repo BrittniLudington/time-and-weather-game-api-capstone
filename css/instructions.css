@@ -38,6 +38,7 @@ h1
         font-family: 'Indie Flower';
         background-color:white;
         border-radius: 25px;
+        cursor: default;
 }
     
 #backButton
@@ -58,6 +59,7 @@ h1
     background-color:white;
     border-radius:25px;
     border:none;
+    cursor: pointer;
 }
 
 #keys
@@ -97,6 +99,7 @@ h1
 #start:hover, #goal:hover, #controls:hover
 {
     background-color: white;
+    cursor: default;
 }
 
 #controls

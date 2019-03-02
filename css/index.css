@@ -44,6 +44,7 @@ body
     background-color:white;
     border-radius:25px;
     border:none;
+    cursor: pointer;
 }
 
 
@@ -59,6 +60,7 @@ header
     font-family: 'Indie Flower';
     background-color:white;
     border-radius: 25px;
+    cursor: default;
 }
 
 @media screen and (max-width:700px)
